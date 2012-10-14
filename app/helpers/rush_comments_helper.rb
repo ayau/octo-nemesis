@@ -1,0 +1,2 @@
+module RushCommentsHelper
+end

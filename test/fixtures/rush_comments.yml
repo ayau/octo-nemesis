@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: rush_comments
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  rush_id    :integer
+#  tag_id     :integer
+#  text       :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  rush_id: 1
+  tag_id: 1
+  text: MyString
+
+two:
+  user_id: 1
+  rush_id: 1
+  tag_id: 1
+  text: MyString
