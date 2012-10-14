@@ -1,5 +1,4 @@
 RushApp::Application.routes.draw do
-    resources :users
 
     resources :rush_comments
     resources :tags
@@ -17,6 +16,11 @@ RushApp::Application.routes.draw do
 
     get "users/new"
 
+    resources :users do
+        member do
+            get 'show'
+        end
+    end
 
     resources :rushes do
         member do

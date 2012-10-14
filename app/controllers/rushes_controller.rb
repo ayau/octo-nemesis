@@ -13,4 +13,6 @@ class RushesController < ApplicationController
     def show
         @rush = Rush.find(params[:id])
     end
+    def index
+    end
 end
