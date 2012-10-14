@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013224522) do
+ActiveRecord::Schema.define(:version => 20121014205928) do
 
   create_table "rush_comments", :force => true do |t|
     t.integer  "user_id"
@@ -47,8 +47,11 @@ ActiveRecord::Schema.define(:version => 20121013224522) do
     t.string   "phone"
     t.string   "uid"
     t.string   "token"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "remember_token"
   end
+
+  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
 end

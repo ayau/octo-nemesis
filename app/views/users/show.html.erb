@@ -1,0 +1,7 @@
+<ul>
+<li><%= current_user.name %></li>
+<li><%= current_user.email %></li>
+<% if current_user.phone  %>
+<li><%= current_user.phone %></li>
+<% end %>
+</ul>
