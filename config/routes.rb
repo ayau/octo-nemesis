@@ -4,6 +4,8 @@ RushApp::Application.routes.draw do
     resources :rush_comments
     resources :tags
 
+    resources :sessions, only: [:new, :create, :destroy]
+
     root to: 'pages#home'
 
     get "tags/new"
@@ -25,7 +27,7 @@ RushApp::Application.routes.draw do
     match "/auth/:provider/callback" => "sessions#create"
     match "/signout" => "sessions#destroy", :as => :signout
 
-    
+
     # The priority is based upon order of creation:
     # first created -> highest priority.
 
