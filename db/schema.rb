@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(:version => 20121013224522) do
     t.string   "name"
     t.string   "email"
     t.string   "phone"
+    t.string   "uid"
+    t.string   "token"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
