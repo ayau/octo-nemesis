@@ -1,6 +1,6 @@
 RushApp::Application.routes.draw do
     resources :users
-    resources :rushes
+
     resources :rush_comments
     resources :tags
 
@@ -11,8 +11,16 @@ RushApp::Application.routes.draw do
     get "rush_comments/new"
 
     get "rushes/new"
+    post 'rushes/new'
 
     get "users/new"
+
+
+    resources :rushes do
+        member do
+            get 'show'
+        end
+    end
 
     # The priority is based upon order of creation:
     # first created -> highest priority.

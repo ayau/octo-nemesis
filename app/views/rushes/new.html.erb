@@ -1,2 +1,16 @@
-<h1>Rushes#new</h1>
-<p>Find me in app/views/rushes/new.html.erb</p>
+<h1>New Rush</h1>
+<%= form_for @rush do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+    <%= f.label :residence %>
+    <%= f.text_field :residence %>
+    <%= f.label :origin %>
+    <%= f.text_field :origin %>
+    <%= f.label :photo %>
+    <%= f.text_field :photo %>
+    <%= f.submit 'Create' %>
+<% end %>
