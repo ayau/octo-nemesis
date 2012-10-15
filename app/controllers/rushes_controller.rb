@@ -12,6 +12,8 @@ class RushesController < ApplicationController
     end
     def show
         @rush = Rush.find(params[:id])
+        @rush_comments = @rush.rush_comments
+        @rush_comment = RushComment.new
     end
     def index
     end

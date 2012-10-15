@@ -16,5 +16,7 @@
 class Rush < ActiveRecord::Base
     attr_accessible :email, :name, :origin, :phone, :photo, :residence
 
+    has_many :rush_comments, dependent: :destroy
+
     validate :name, presence: true
 end
