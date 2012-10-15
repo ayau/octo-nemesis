@@ -10,4 +10,11 @@ class RushCommentsController < ApplicationController
             render 'new'
         end
   end
+
+  def destroy
+    @rush_comment = RushComment.find(params[:id])
+    @rush_comment.destroy
+    redirect_to Rush.find(@rush_comment.rush_id)
+  end
+
 end

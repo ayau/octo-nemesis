@@ -50,8 +50,18 @@
         <% if !@rush_comments.blank? %>
             <% for item in @rush_comments %>
                 <blockquote>
-                    <p><a href='/users/<%= item.user_id%>'><%=item.user_id%></a><%= item.text%></p>
+                    <p>
+                        <% if User.find_by_id(item.user_id) %>
+                            <a href='/users/<%= item.user_id%>'>
+                                <%=User.find_by_id(item.user_id).name%>
+                            </a>
+                        <% end %>
+                        <%= item.text%>
+                    </p>
                     <small>updated at: <cite title="Source Title"><%= item.updated_at.localtime.strftime("%I:%M%p %m/%d/%Y")%></cite></small>
+                    <% if item.user_id == current_user.id %>
+                        <%= link_to 'delete', item, :confirm => 'Are you sure you want to delete this comment?', :method => :delete %>
+                    <% end %>
                 </blockquote>
           <% end %>
         <% else %>
