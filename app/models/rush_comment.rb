@@ -16,7 +16,7 @@ class RushComment < ActiveRecord::Base
     belongs_to :user
     belongs_to :rush
     validates :rush_id, presence: true
-    #validates :user_id, presence: true
+    validates :user_id, presence: true
     validates :text, presence: true
 
     default_scope order: 'rush_comments.created_at DESC'

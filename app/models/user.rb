@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
 
     before_save :create_remember_token
 
+    validates :name, presence: true
+    validates :uid, presence: true
+    validates :token, presence: true
+
     def self.create_with_omniauth(auth)
   		create! do |user|
     	user.uid = auth["uid"]
