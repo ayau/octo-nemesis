@@ -15,12 +15,14 @@
     <% if !@rushes.blank? %>
         <% i = 1 %>
         <% for rush in @rushes %>
-            <tr onclick='window.location = "/rushes/<%=rush.id%>"'>
-                <td><%= i%></td>
-                <td><%= rush.name.split[0]%></td>
-                <td><%= rush.name.split[1..-1].join(' ')%></td>
-            </tr>
-            <% i += 1 %>
+            <% if rush.name.length > 0 %>
+                <tr onclick='window.location = "/rushes/<%=rush.id%>"'>
+                    <td><%= i%></td>
+                    <td><%= rush.name.split[0]%></td>
+                    <td><%= rush.name.split[1..-1].join(' ')%></td>
+                </tr>
+                <% i += 1 %>
+            <% end %>
       <% end %>
     <% else %>
 
