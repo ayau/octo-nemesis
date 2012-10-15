@@ -28,54 +28,34 @@
                 <li><a>Jake</a></li>
             </ul>
         </div>
-        <div class='attendedto'>
-            <h3>Attended to</h3>
+        <div class='attended'>
+            <h3>Attended</h3>
             <ul>
                 <li><a>Civy (10/03)</a></li>
                 <li><a>Animal Party</a></li>
             </ul>
         </div>
     </article>
+    <article class='comments'>
+        <%= form_for @rush_comment do |f| %>
+            <%= f.text_area :text, :placeholder => "Say something about " + @rush.name %>
+
+            <input id="rush_comment_rush_id" name="rush_comment[rush_id]" type="hidden" value= <%= @rush.id %> >
+            <input id="rush_comment_user_id" name="rush_comment[user_id]" type="hidden" value= <%= current_user.id %> >
+
+            
+            <%= f.submit 'Submit', :class => 'btn-large btn btn-success' %>
+        <% end %>
+
+        <% if !@rush_comments.blank? %>
+            <% for item in @rush_comments %>
+                <blockquote>
+                    <p><a href='/users/<%= item.user_id%>'><%=item.user_id%></a><%= item.text%></p>
+                    <small>updated at: <cite title="Source Title"><%= item.updated_at.localtime.strftime("%I:%M%p %m/%d/%Y")%></cite></small>
+                </blockquote>
+          <% end %>
+        <% else %>
+
+        <% end %>
+    </article>
 </section>
-
-<!-- 
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  photo      :string(255)
-#  email      :string(255)
-#  phone      :string(255)
-#  residence  :string(255)
-#  origin     :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
- -->
-
-
-
-
-
-<!-- LOL -->
-<!-- 
-<textarea/>
-<submit> -->
-<% if !@rush_comments.blank? %>
-  <% for item in @rush_comments %>
-  	<%= item.user_id %>:
-  	<%= item.text %>
-  	<%= item.updated_at %>
-  <% end %>
-<% else %>
-
-<% end %>
-
-<h1>New Comment</h1>
-<%= form_for @rush_comment do |f| %>
-    <%= f.label :text %>
-    <%= f.text_field :text %>
-
-	<input id="rush_comment_rush_id" name="rush_comment[rush_id]" type="hidden" value= <%= @rush.id %> >
-	<input id="rush_comment_user_id" name="rush_comment[user_id]" type="hidden" value= <%= current_user.id %> >
-
-    
-    <%= f.submit 'Create' %>
-<% end %>

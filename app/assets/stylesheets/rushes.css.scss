@@ -20,10 +20,18 @@
 
     .info{
         float:left;
+        h3{
+            line-height: 1;
+            margin:5px 0px;
+            font-size: 18px;
+        }
         dd{
             color: $secondaryColor;
             font-size: 18px;
             padding: 5px 0px;
+        }
+        dl{
+            margin:0px;
         }
         .chilltopull{
             margin-left: 20px;
@@ -46,7 +54,7 @@
             }
             .bar-success { background: #62c462;}
         }
-        .friendswith, .attendedto{
+        .friendswith, .attended{
             margin-left: 20px;
             margin-top: 10px;
             overflow:auto;
@@ -65,5 +73,75 @@
                 }
             }
         }
+    }
+
+    .comments{
+        overflow:auto;
+        width:100%;
+        padding-top: 30px;
+        textarea{
+            font-size: 16px;
+            width: 600px;
+            height: 80px;
+            resize: none;
+        }
+        blockquote{
+            border-left: 5px solid #0BC;
+            a{
+                padding-right: 10px;
+            }
+        }
+        .btn{
+            margin-left: 10px;
+            margin-top: 20px;
+        }
+    }
+}
+
+.mpl{
+    h1{
+        width: 400px;
+    }
+    .add_rush{
+        position:relative;
+        top: -50px;
+        left: 380px;
+    }
+    .form-search{
+        position:relative;
+        top: -20px;
+        input{
+            width: 200px;
+        }
+    }
+    table{
+        margin-top:-20px;
+        width: 600px;
+        tr{
+            &.header{
+                &:hover{
+                    background: none;
+                }
+            }
+            &:hover{
+                background: rgba(0,0,0, 0.1);
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.new_rush{
+    width: 400px;
+    margin: 0 auto;
+    h1{
+        margin-left: 100px;
+        margin-bottom: 20px;
+    }
+    form{
+        margin-left: -50px;
+    }
+    .btn{
+        margin-left: 300px;
     }
 }

@@ -16,5 +16,6 @@ class RushesController < ApplicationController
         @rush_comment = RushComment.new
     end
     def index
+        @rushes = Rush.find :all
     end
 end

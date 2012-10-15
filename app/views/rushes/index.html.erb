@@ -1,1 +1,29 @@
-<h1>Should show list of rushes</h1>
+<section class='mpl'>
+    <h1>Master Prospect List</h1>
+    <input type='button' class='add_rush btn btn-large btn-primary' value='Add rush' onclick='window.location = "/rushes/new"'/>
+    <form class="form-search">
+        <input type="text" class="input-medium search-query" placeholder="Search for rushes">
+        <button type="submit" class="btn">Search</button>
+    </form>
+
+    <table class='table'>
+        <tr class='header'>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+    <% if !@rushes.blank? %>
+        <% i = 1 %>
+        <% for rush in @rushes %>
+            <tr onclick='window.location = "/rushes/<%=rush.id%>"'>
+                <td><%= i%></td>
+                <td><%= rush.name.split[0]%></td>
+                <td><%= rush.name.split[1..-1].join(' ')%></td>
+            </tr>
+            <% i += 1 %>
+      <% end %>
+    <% else %>
+
+    <% end %>
+    </table>
+</section>
