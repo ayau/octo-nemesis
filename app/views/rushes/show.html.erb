@@ -38,7 +38,7 @@
     </article>
     <article class='comments'>
         <%= form_for @rush_comment do |f| %>
-            <%= f.text_area :text, :placeholder => "Say something about " + @rush.name %>
+            <%= f.text_area :text, :placeholder => "Say something about " + @rush.name.split[0] %>
 
             <input id="rush_comment_rush_id" name="rush_comment[rush_id]" type="hidden" value= <%= @rush.id %> >
             <input id="rush_comment_user_id" name="rush_comment[user_id]" type="hidden" value= <%= current_user.id %> >
