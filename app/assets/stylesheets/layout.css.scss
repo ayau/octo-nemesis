@@ -1,9 +1,5 @@
 @import "bootstrap";
-
-$mainColor: #000;
-$accentColor: #CC9900;
-$bgColor: #F7F6E6;
-$secondaryColor: #FFFFCC;
+@import "default";
 
 html, body{
     box-sizing: border-box;

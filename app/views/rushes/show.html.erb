@@ -1,11 +1,54 @@
+<section class='rush'>
+    <h1><%= @rush.name %></h1>
+    <div class='photo' style='background-image: url(http://sphotos-b.xx.fbcdn.net/hphotos-prn1/557770_3518418074958_937029982_n.jpg)'>
+    </div>
+    <article class='info'>
+        <dl class="dl-horizontal">
+            <dt><h3>Phone<h3></dt>
+            <dd><%= @rush.phone %></dd>
+            <dt><h3>Email<h3></dt>
+            <dd><%= @rush.email %></dd>
+            <dt><h3>Residence<h3></dt>
+            <dd><%= @rush.residence %></dd>
+            <dt><h3>From<h3></dt>
+            <dd><%= @rush.origin %></dd>
+        </dl>
+        <div class='chilltopull'>
+            <span class='chill'>Chill</span>
+            <span class='pull'>Pull</span>
+        </div>
+        <div class="progress">
+            <div class="bar bar-info" style="width: 35%;"></div>
+            <div class="bar bar-success" style="width: 20%;"></div>
+        </div>
+        <div class='friendswith'>
+            <h3>Friends with</h3>
+            <ul>
+                <li><a>Joe</a></li>
+                <li><a>Jake</a></li>
+            </ul>
+        </div>
+        <div class='attendedto'>
+            <h3>Attended to</h3>
+            <ul>
+                <li><a>Civy (10/03)</a></li>
+                <li><a>Animal Party</a></li>
+            </ul>
+        </div>
+    </article>
+</section>
 
-
-
-
-
-
-
-
+<!-- 
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  photo      :string(255)
+#  email      :string(255)
+#  phone      :string(255)
+#  residence  :string(255)
+#  origin     :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+ -->
 
 
 
