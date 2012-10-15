@@ -58,3 +58,24 @@
 <!-- 
 <textarea/>
 <submit> -->
+<% if !@rush_comments.blank? %>
+  <% for item in @rush_comments %>
+  	<%= item.user_id %>:
+  	<%= item.text %>
+  	<%= item.updated_at %>
+  <% end %>
+<% else %>
+
+<% end %>
+
+<h1>New Comment</h1>
+<%= form_for @rush_comment do |f| %>
+    <%= f.label :text %>
+    <%= f.text_field :text %>
+
+	<input id="rush_comment_rush_id" name="rush_comment[rush_id]" type="hidden" value= <%= @rush.id %> >
+	<input id="rush_comment_user_id" name="rush_comment[user_id]" type="hidden" value= <%= current_user.id %> >
+
+    
+    <%= f.submit 'Create' %>
+<% end %>

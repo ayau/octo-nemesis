@@ -12,5 +12,11 @@
 #
 
 class RushComment < ActiveRecord::Base
-    attr_accessible :rush_id, :tag_id, :text, :user_id
+    attr_accessible :rush_id, :tag_id, :text, :user_id, :updated_at
+    belongs_to :user
+    belongs_to :rush
+    validates :rush_id, presence: true
+    #validates :user_id, presence: true
+
+    default_scope order: 'rush_comments.created_at DESC'
 end
