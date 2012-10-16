@@ -5,7 +5,6 @@ class RushesController < ApplicationController
     def create
         @rush = Rush.new(params[:rush])
         @rush.phone = @rush.phone.gsub(/[^0-9]/i, '')
-        if (@rush.phone.length == 10)
             if @rush.save
                 redirect_to @rush
             elsif Rush.find_by_phone(@rush.phone)
@@ -13,9 +12,6 @@ class RushesController < ApplicationController
             else
                 render 'new'
             end
-        else
-            render 'new'
-        end
     end
     def show
         @rush = Rush.find(params[:id])

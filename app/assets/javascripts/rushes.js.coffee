@@ -3,9 +3,9 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $(document).ready ->
-  $("#edit_new_rush_comment").hide()
-  $("#edit_button").click ->
-    if $("#edit_new_rush_comment").is(":visible")
-      $("#edit_new_rush_comment").hide()
+  $(".edit_new_rush_comment").hide()
+  $(".edit_button").click ->
+    if $(".edit_new_rush_comment").is(":visible")
+      $(".edit_new_rush_comment").hide()
     else
-      $("#edit_new_rush_comment").show()
+      $(".edit_new_rush_comment").show()

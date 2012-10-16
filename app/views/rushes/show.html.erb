@@ -5,7 +5,13 @@
     <article class='info'>
         <dl class="dl-horizontal">
             <dt><h3>Phone<h3></dt>
-            <dd>(<%= @rush.phone[0..2] %>)<%= @rush.phone[3..5] %>-<%= @rush.phone[6..9] %></dd>
+            <dd>
+                <% if @rush.phone.length == 10 %>
+                    (<%= @rush.phone[0..2] %>)<%= @rush.phone[3..5] %>-<%= @rush.phone[6..9] %>
+                <% else %>
+                    <%= @rush.phone %>
+                <% end %>
+            </dd>
             <dt><h3>Email<h3></dt>
             <dd><%= @rush.email %></dd>
             <dt><h3>Residence<h3></dt>
@@ -61,8 +67,8 @@
                     <small>updated at: <cite title="Source Title"><%= item.updated_at.localtime.strftime("%I:%M%p %m/%d/%Y")%></cite></small>
                     <% if item.user_id == current_user.id %>
                         <%= link_to 'delete', item, :confirm => 'Are you sure you want to delete this comment?', :method => :delete, :class => 'btn-small btn' %>
-                        <button id="edit_button" class="btn-small btn">edit</button>
-                        <%= form_for( @rush_comment, :namespace => 'edit', :url => edit_rush_comment_path( item ), :html => { :method => :post } ) do |f| %>
+                        <button class="edit_button btn-small btn">edit</button>
+                        <%= form_for( @rush_comment, :namespace => 'edit', :url => edit_rush_comment_path( item ), :html => { :method => :post, :class => 'edit_new_rush_comment' } ) do |f| %>
                             <input id="edit_rush_comment_text" name="rush_comment[text]" value= "<%= item.text %>" >
                             <%= f.submit "Submit" %>
                         <% end %>

@@ -19,6 +19,8 @@ class Rush < ActiveRecord::Base
     has_many :rush_comments, dependent: :destroy
 
     validates :name, presence: true
-    validates :phone, presence: true
-    validates_uniqueness_of :phone
+    validates_uniqueness_of :name
+    #For now I got rid of phone validation in case we have no phone number
+    #validates :phone, presence: true
+    #validates_uniqueness_of :phone
 end
