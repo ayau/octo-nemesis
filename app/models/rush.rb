@@ -20,4 +20,5 @@ class Rush < ActiveRecord::Base
 
     validates :name, presence: true
     validates :phone, presence: true
+    validates_uniqueness_of :phone
 end

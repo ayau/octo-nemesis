@@ -6,6 +6,8 @@ class RushesController < ApplicationController
         @rush = Rush.new(params[:rush])
         if @rush.save
             redirect_to @rush
+        elsif Rush.find_by_phone(@rush.phone)
+            redirect_to Rush.find_by_phone(@rush.phone)
         else
             render 'new'
         end
