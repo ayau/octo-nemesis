@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121014205928) do
+ActiveRecord::Schema.define(:version => 20121015230739) do
 
   create_table "rush_comments", :force => true do |t|
     t.integer  "user_id"
@@ -29,8 +29,9 @@ ActiveRecord::Schema.define(:version => 20121014205928) do
     t.string   "phone"
     t.string   "residence"
     t.string   "origin"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "primary_contact_id"
   end
 
   create_table "tags", :force => true do |t|

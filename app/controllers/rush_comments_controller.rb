@@ -14,4 +14,10 @@ class RushCommentsController < ApplicationController
     redirect_to Rush.find(@rush_comment.rush_id)
   end
 
+  def edit
+    @rush_comment = RushComment.find(params[:id])
+    @rush_comment.update_attributes(params[:rush_comment])
+    redirect_to Rush.find(@rush_comment.rush_id)  
+  end
+
 end

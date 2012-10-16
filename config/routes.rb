@@ -31,6 +31,7 @@ RushApp::Application.routes.draw do
     resources :rush_comments do
         member do
             get 'show'
+            post 'edit'
         end
     end
 
