@@ -14,4 +14,26 @@
         comment.find('.show').show()
         comment.find('.buttons').show()
         comment.find('.edit_new_rush_comment').hide()
+
+    $( ".slider" ).slider(
+        animate: true,
+        range: "min",
+        value: 5,
+        min: 0,
+        max: 5,
+        step: 1,
+ 
+        # this gets a live reading of the value and prints it on the page
+        slide: ((event, ui ) ->
+            if $(this).hasClass('slider_pull')
+                results = $('.slider_pull_results')
+            else
+                results = $('.slider_chill_results')
+            results.html( ui.value )
+        ),
+        # this updates the hidden form field so we can submit the data using a form
+        change: ((event, ui) ->
+            $('#hidden').attr('value', ui.value)
+        ))
+
         

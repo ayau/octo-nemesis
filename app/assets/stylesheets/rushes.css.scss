@@ -5,6 +5,13 @@
 
 
 .rush {
+    background: lighten($bgColor, 2);
+    box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.5); 
+    padding: 10px 20px;
+    margin: 0px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    clear:both;
     h1{
         margin: 10px 0px 20px;
     }
@@ -23,9 +30,10 @@
         top: 0px;
         z-index: -1;
         background: #DDD;
-        box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.3);
+        box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.5);
     }
     .photo{
+        border-radius: 5px;
         width: 100%;
         height: 100%;
         background-repeat: no-repeat;
@@ -102,7 +110,12 @@
             resize: none;
         }
         blockquote{
+            overflow: hidden;
+            width: 600px;
             border-left: 5px solid #0BC;
+            p{
+                word-wrap:break-word;
+            }
             a{
                 padding-right: 10px;
             }
@@ -118,6 +131,73 @@
             margin-top: 20px;
         }
     }
+
+    .new_rush_comment{
+        float:left;
+    }
+    .slider_container{
+        position:relative;
+        width: 270px;
+        margin-bottom: 10px;
+        margin-left: 30px;
+        float:left;
+        b{
+            font-size: 16px;
+        }
+        p{
+            float:left;
+            width: 30px;
+            margin-top: 2px;
+        }
+        .results{
+            margin-left: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .btn{
+            float:right;
+            margin-right: 50px;
+        }
+    }
+    /*the slider background*/
+    .slider {
+        float:left;
+        width:150px;
+        height:11px;
+        background: #FFF;
+        position:relative;
+        margin:0;
+        margin-top: 5px;
+        padding:0 10px;
+    }
+ 
+    /*Style for the slider button*/
+    .ui-slider-handle.ui-state-default {
+        border: 1px solid rgba(0,0,0,0.4);
+        background-image: linear-gradient(top, #FFF, #AAA);
+        background-image: -webkit-linear-gradient(top, #FFF, #DDD);
+    }
+ 
+    /*This is the fill bar colour*/
+    .ui-widget-header {
+        height:8px;
+        left:1px;
+        top:1px;
+        position:absolute;
+    }
+    .slider_chill{
+        .ui-widget-header{
+            background-image: linear-gradient(top, #049CDB, #0064CD);
+            background-image: -webkit-linear-gradient(top, #049CDB, #0064CD);
+        }
+    }
+    .slider_pull{
+        .ui-widget-header{
+            background-image: linear-gradient(top, #62C462, #57A957);
+            background-image: -webkit-linear-gradient(top, #62C462, #57A957);
+        }
+    }
+
 }
 
 .mpl{

@@ -2,7 +2,7 @@
     <h1><%= @rush.name %></h1>
     <article class='photo_container'>
         <div class='background'></div>
-        <div class='photo' style='background-image: url(https://sphotos-a.xx.fbcdn.net/hphotos-ash4/359_33376189118_9123_n.jpg) '></div>
+        <div class='photo' style='background-image: url(http://sphotos-b.xx.fbcdn.net/hphotos-prn1/557770_3518418074958_937029982_n.jpg) '></div>
     </article>
     <article class='info'>
         <dl class="dl-horizontal">
@@ -54,6 +54,18 @@
             
             <%= f.submit 'Submit', :class => 'new_comment btn-large btn btn-success' %>
         <% end %>
+
+        <article class='slider_container'>
+            <b>How is <%= @rush.name.split[0] %>'s chill and pull?</b><br/>
+            <p>Chill</p>
+            <div class='slider slider_chill'></div>
+            <p class='results slider_chill_results'>5</p>
+            <p>Pull</p>
+            <div class='slider slider_pull'></div>
+            <p class='results slider_pull_results'>5</p>
+            <input type="hidden" class="slider_pull"/>
+            <input type='submit' class='btn' value='vote'/>
+        </article>
 
         <% if !@rush_comments.blank? %>
             <% for item in @rush_comments %>
