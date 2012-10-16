@@ -8,12 +8,27 @@
     h1{
         margin: 10px 0px 20px;
     }
-
-    .photo{
-        border-radius: 5px;
+    .photo_container{
         float:left;
         width: 400px;
         height:400px;
+        position:relative;
+    }
+    .background{
+        border-radius: 5px;
+        width: 100%;
+        height: 100%;
+        position:absolute;
+        left: 0px;
+        top: 0px;
+        z-index: -1;
+        background: #DDD;
+        box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.3);
+    }
+    .photo{
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
         background-size: 100% auto;
         background-position:center;
     }
@@ -82,7 +97,7 @@
         padding-top: 30px;
         textarea{
             font-size: 16px;
-            width: 600px;
+            width: 500px;
             height: 80px;
             resize: none;
         }
@@ -91,8 +106,14 @@
             a{
                 padding-right: 10px;
             }
+            .edit_new_rush_comment{
+                display: none;
+                textarea{
+                    width: 400px;
+                }
+            }
         }
-        .btn{
+        .new_comment{
             margin-left: 10px;
             margin-top: 20px;
         }
