@@ -68,7 +68,7 @@
                     <% if item.user_id == current_user.id %>
                         <%= link_to 'delete', item, :confirm => 'Are you sure you want to delete this comment?', :method => :delete, :class => 'btn-small btn' %>
                         <button class="edit_button btn-small btn">edit</button>
-                        <%= form_for( @rush_comment, :namespace => 'edit', :url => edit_rush_comment_path( item ), :html => { :method => :post, :class => 'edit_new_rush_comment' } ) do |f| %>
+                        <%= form_for( @rush_comment, :namespace => 'edit', :url => edit_rush_comment_path( item ), :html => { :method => :post, :class => "edit_new_rush_comment" } ) do |f| %>
                             <input id="edit_rush_comment_text" name="rush_comment[text]" value= "<%= item.text %>" >
                             <%= f.submit "Submit" %>
                         <% end %>
