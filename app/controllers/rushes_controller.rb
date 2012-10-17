@@ -24,9 +24,6 @@ class RushesController < ApplicationController
         @rush_comments = @rush.rush_comments
         @rush_comment = RushComment.new
         @current_rating = Cprating.where(:user_id=>current_user.id).where(:rush_id=>@rush.id).first
-        # @ranking = Rush.find_by_sql ""
-        # @current_rating = Cprating.find(5)
-        # @current_rating = Cprating.find_by_rush_id_and_user_id(@rush.id, current_user.id)
     end
     def index
         @rushes = Rush.find_by_sql "select * from rushes as r 
@@ -34,8 +31,6 @@ class RushesController < ApplicationController
                                         on c.rush_id = r.id 
                                         order by c.avg_chill DESC"
         @RushesController = self
-        # @get_average_pull = get_average_pull
-        # @get_average_chill = get_average_chill
     end
 
     def get_average_pull(cpratings)

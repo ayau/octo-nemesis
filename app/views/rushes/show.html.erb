@@ -75,7 +75,7 @@
                 <% end %>
             <% else %>
                 <!-- Already voted -->
-                <b>How is <%= @rush.name.split[0] %>'s chill and pull?</b><br/>
+                <b>You have already voted for <%= @rush.name.split[0] %></b><br/>
                 <p>Chill</p>
                 <div class='slider slider_chill'></div>
                 <p class='results slider_chill_results'><%= @current_rating.chill %></p>
@@ -87,7 +87,7 @@
                     <input id="new_cprating_chill" name="cprating[chill]" type="hidden" class="slider_chill_form" value='<%= @current_rating.chill %>'/>
                     <input id="new_cprating_rush_id" name="cprating[rush_id]" type="hidden" value= <%= @rush.id %> >
                     <input id="new_cprating_user_id" name="cprating[user_id]" type="hidden" value= <%= current_user.id %> >
-                    <%= f.submit 'vote', :class => 'btn' %>
+                    <%= f.submit 'change', :class => 'btn' %>
                 <% end %>
             <% end %>
         </article>

@@ -20,8 +20,8 @@
             <% if rush.name.length > 0 %>
                 <tr onclick='window.location = "/rushes/<%=rush.id%>"'>
                     <td><%= i%></td>
-                    <td><%= rush.name.split[0]%></td>
-                    <td><%= rush.name.split[1..-1].join(' ')%></td>
+                    <td class='first_name'><%= rush.name.split[0]%></td>
+                    <td class='last_name'><%= rush.name.split[1..-1].join(' ')%></td>
                     <th><%= @RushesController.get_average_chill(rush.cpratings) %></th>
                     <th><%= @RushesController.get_average_pull(rush.cpratings) %></th>
                 </tr>
