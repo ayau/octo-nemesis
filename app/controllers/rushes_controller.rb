@@ -20,6 +20,9 @@ class RushesController < ApplicationController
         @cprating = Cprating.new
         @rush_comments = @rush.rush_comments
         @rush_comment = RushComment.new
+        @current_rating = Cprating.where(:user_id=>current_user.id).where(:rush_id=>@rush.id).first
+        # @current_rating = Cprating.find(5)
+        # @current_rating = Cprating.find_by_rush_id_and_user_id(@rush.id, current_user.id)
     end
     def index
         @rushes = Rush.find :all
@@ -28,7 +31,9 @@ class RushesController < ApplicationController
     def get_average_pull(cpratings)
         total = 0
         for cp in cpratings
-            total += cp.pull
+            if !cp.pull.nil?
+                total += cp.pull
+            end
         end
         return total/cpratings.length
     end
@@ -36,7 +41,9 @@ class RushesController < ApplicationController
     def get_average_chill(cpratings)
         total = 0
         for cp in cpratings
-            total += cp.chill
+            if !cp.pull.nil?
+                total += cp.chill
+            end
         end
         return total/cpratings.length
     end

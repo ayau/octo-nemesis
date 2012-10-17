@@ -1,8 +1,6 @@
 RushApp::Application.routes.draw do
 
-    resources :rush_comments
     resources :tags
-    resources :cpratings
 
     resources :sessions, only: [:new, :create, :destroy]
 
@@ -32,6 +30,12 @@ RushApp::Application.routes.draw do
     resources :rush_comments do
         member do
             get 'show'
+            post 'edit'
+        end
+    end
+
+    resources :cpratings do
+        member do
             post 'edit'
         end
     end

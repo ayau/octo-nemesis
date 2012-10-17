@@ -18,7 +18,7 @@
     $( ".slider" ).slider(
         animate: true,
         range: "min",
-        value: 5,
+        value: 0,
         min: 0,
         max: 5,
         step: 1,
@@ -34,10 +34,14 @@
         # this updates the hidden form field so we can submit the data using a form
         change: ((event, ui) ->
             if $(this).hasClass('slider_pull')
-                form = $('.slider_pull_form')
+                form = $('#new_cprating_pull')
             else
-                form = $('.slider_chill_form')
+                form = $('#new_cprating_chill')
             form.attr('value', ui.value)
-        ))
+        )
+    )
 
+    $('.slider_pull').slider('value', $('.slider_pull_results').text())
+
+    $('.slider_chill').slider('value', $('.slider_chill_results').text())
         

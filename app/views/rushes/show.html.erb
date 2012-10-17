@@ -27,8 +27,8 @@
             <span class='pull'>Pull</span>
         </div>
         <div class="progress">
-            <div class="bar bar-info" style="width: 35%;"><p><%= @average_pull%></p></div>
-            <div class="bar bar-success" style="width: 20%;"><p><%= @average_chill%></p></div>
+            <div class="bar bar-info" style="width: <%=@average_pull*10%>%;"><p><%= @average_pull%></p></div>
+            <div class="bar bar-success" style="width: <%=@average_chill*10%>%;"><p><%= @average_chill%></p></div>
         </div>
         <div class='friendswith'>
             <h3>Friends with</h3>
@@ -57,19 +57,38 @@
         <% end %>
 
         <article class='slider_container'>
-            <b>How is <%= @rush.name.split[0] %>'s chill and pull?</b><br/>
-            <p>Chill</p>
-            <div class='slider slider_chill'></div>
-            <p class='results slider_chill_results'>5</p>
-            <p>Pull</p>
-            <div class='slider slider_pull'></div>
-            <p class='results slider_pull_results'>5</p>
-            <%= form_for @cprating do |f| %>
-                <input id="new_cprating_pull" name="cprating[pull]" type="hidden" class="slider_pull_form"/>
-                <input id="new_cprating_chill" name="cprating[chill]" type="hidden" class="slider_chill_form"/>
-                <input id="new_cprating_rush_id" name="cprating[rush_id]" type="hidden" value= <%= @rush.id %> >
-                <input id="new_cprating_user_id" name="cprating[user_id]" type="hidden" value= <%= current_user.id %> >
-                <%= f.submit 'vote', :class => 'btn' %>
+            <!-- If not yet already voted -->
+            <% if @current_rating.blank? %>
+                <b>How is <%= @rush.name.split[0] %>'s chill and pull?</b><br/>
+                <p>Chill</p>
+                <div class='slider slider_chill'></div>
+                <p class='results slider_chill_results'>5</p>
+                <p>Pull</p>
+                <div class='slider slider_pull'></div>
+                <p class='results slider_pull_results'>5</p>
+                <%= form_for @cprating do |f| %>
+                    <input id="new_cprating_pull" name="cprating[pull]" type="hidden" class="slider_pull_form" value='5'/>
+                    <input id="new_cprating_chill" name="cprating[chill]" type="hidden" class="slider_chill_form" value='5'/>
+                    <input id="new_cprating_rush_id" name="cprating[rush_id]" type="hidden" value= <%= @rush.id %> >
+                    <input id="new_cprating_user_id" name="cprating[user_id]" type="hidden" value= <%= current_user.id %> >
+                    <%= f.submit 'vote', :class => 'btn' %>
+                <% end %>
+            <% else %>
+                <!-- Already voted -->
+                <b>How is <%= @rush.name.split[0] %>'s chill and pull?</b><br/>
+                <p>Chill</p>
+                <div class='slider slider_chill'></div>
+                <p class='results slider_chill_results'><%= @current_rating.chill %></p>
+                <p>Pull</p>
+                <div class='slider slider_pull'></div>
+                <p class='results slider_pull_results'><%= @current_rating.pull %></p>
+                <%= form_for @cprating, :url => edit_cprating_path(@current_rating), :html => { :method => :post} do |f| %>
+                    <input id="new_cprating_pull" name="cprating[pull]" type="hidden" class="slider_pull_form" value='<%= @current_rating.pull %>'/>
+                    <input id="new_cprating_chill" name="cprating[chill]" type="hidden" class="slider_chill_form" value='<%= @current_rating.chill %>'/>
+                    <input id="new_cprating_rush_id" name="cprating[rush_id]" type="hidden" value= <%= @rush.id %> >
+                    <input id="new_cprating_user_id" name="cprating[user_id]" type="hidden" value= <%= current_user.id %> >
+                    <%= f.submit 'vote', :class => 'btn' %>
+                <% end %>
             <% end %>
         </article>
 

@@ -7,4 +7,10 @@ class CpratingsController < ApplicationController
         @cprating.save
         redirect_to Rush.find(@cprating.rush_id)
     end
+
+    def edit
+        @cprating = Cprating.find(params[:id])
+        @cprating.update_attributes(params[:cprating])
+        redirect_to Rush.find(@cprating.rush_id)  
+    end
 end
