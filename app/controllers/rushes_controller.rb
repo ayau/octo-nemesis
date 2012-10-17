@@ -35,7 +35,11 @@ class RushesController < ApplicationController
                 total += cp.pull
             end
         end
-        return total/cpratings.length
+        if cpratings.length != 0
+            return total/cpratings.length
+        else 
+            return 0
+        end
     end
 
     def get_average_chill(cpratings)
@@ -45,7 +49,11 @@ class RushesController < ApplicationController
                 total += cp.chill
             end
         end
-        return total/cpratings.length
+        if cpratings.length != 0
+            return total/cpratings.length
+        else
+            return 0
+        end
     end
 
 end
