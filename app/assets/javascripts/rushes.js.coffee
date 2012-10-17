@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
- $ ->
+$ ->
     $('.edit_button').click ->
         comment = $(this).parent().parent()
         comment.find('.show').hide()
@@ -44,4 +44,27 @@
     $('.slider_pull').slider('value', $('.slider_pull_results').text())
 
     $('.slider_chill').slider('value', $('.slider_chill_results').text())
-        
+
+
+    query = ''
+    timer = null
+    results = []
+    table = null
+
+    $('.search-query').keyup ()->
+        query = $('.search-query').val().toLowerCase()
+        search(query)
+
+    search = (query) ->       
+        table = $('.table')
+        table.find('tr').each ->
+            if query.length == 0 || $(this).hasClass('header')
+                $(this).show()
+                return
+            first_name = $(this).find('.first_name').text().toLowerCase()
+            last_name = $(this).find('.last_name').text().toLowerCase()
+
+            if first_name.indexOf(query) >= 0 || last_name.indexOf(query) >= 0 || (first_name + ' ' + last_name).indexOf(query) >= 0
+                $(this).show()
+            else
+                $(this).hide()
