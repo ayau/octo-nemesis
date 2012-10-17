@@ -10,8 +10,8 @@ class RushesController < ApplicationController
         @rush.phone = @rush.phone.gsub(/[^0-9]/i, '')
             if @rush.save
                 redirect_to @rush
-            elsif Rush.find_by_phone(@rush.phone)
-                redirect_to Rush.find_by_phone(@rush.phone)
+            elsif Rush.find_by_name(@rush.name)
+                redirect_to Rush.find_by_name(@rush.name)
             else
                 render 'new'
             end
