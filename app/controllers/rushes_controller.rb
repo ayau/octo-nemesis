@@ -29,6 +29,9 @@ class RushesController < ApplicationController
                                     left join (select rush_id, avg(chill) as avg_chill from cpratings group by rush_id) as c 
                                         on c.rush_id = r.id 
                                         order by c.avg_chill DESC"
+        @RushesController = self
+        # @get_average_pull = get_average_pull
+        # @get_average_chill = get_average_chill
     end
 
     def get_average_pull(cpratings)
