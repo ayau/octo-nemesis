@@ -23,7 +23,10 @@ class RushesController < ApplicationController
         @current_rating = Cprating.where(:user_id=>current_user.id).where(:rush_id=>@rush.id).first
     end
     def index
-        @rushes = Rush.find :all
+        @rushes = Rush.find_by_sql "select * from rushes as r 
+                                    left join (select rush_id, avg(chill) as avg_chill from cpratings group by rush_id) as c 
+                                        on c.rush_id = r.id 
+                                        order by c.avg_chill DESC"
         @RushesController = self
     end
 
