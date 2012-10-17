@@ -26,6 +26,9 @@ class RushesController < ApplicationController
     end
     def index
         @rushes = Rush.find :all
+        @RushesController = self
+        # @get_average_pull = get_average_pull
+        # @get_average_chill = get_average_chill
     end
 
     def get_average_pull(cpratings)

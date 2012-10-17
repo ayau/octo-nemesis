@@ -11,6 +11,8 @@
             <th>#</th>
             <th>First Name</th>
             <th>Last Name</th>
+            <th>Chill</th>
+            <th>Pull</th>
         </tr>
     <% if !@rushes.blank? %>
         <% i = 1 %>
@@ -20,6 +22,8 @@
                     <td><%= i%></td>
                     <td><%= rush.name.split[0]%></td>
                     <td><%= rush.name.split[1..-1].join(' ')%></td>
+                    <th><%= @RushesController.get_average_chill(rush.cpratings) %></th>
+                    <th><%= @RushesController.get_average_pull(rush.cpratings) %></th>
                 </tr>
                 <% i += 1 %>
             <% end %>
