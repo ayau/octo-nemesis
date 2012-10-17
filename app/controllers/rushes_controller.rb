@@ -25,7 +25,10 @@ class RushesController < ApplicationController
         # @current_rating = Cprating.find_by_rush_id_and_user_id(@rush.id, current_user.id)
     end
     def index
-        @rushes = Rush.find :all
+        @rushes = Rush.find_by_sql "select * from rushes as r 
+                                    left join (select rush_id, avg(chill) as avg_chill from cpratings group by rush_id) as c 
+                                        on c.rush_id = r.id 
+                                        order by c.avg_chill DESC"
     end
 
     def get_average_pull(cpratings)
