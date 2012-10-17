@@ -1,5 +1,6 @@
 <section class='rush'>
     <h1><%= @rush.name %></h1>
+    <h1 class='rank'>Rank #4</h1>
     <article class='photo_container'>
         <div class='background'></div>
         <div class='photo' style='background-image: url(http://sphotos-b.xx.fbcdn.net/hphotos-prn1/557770_3518418074958_937029982_n.jpg) '></div>
@@ -26,8 +27,8 @@
             <span class='pull'>Pull</span>
         </div>
         <div class="progress">
-            <div class="bar bar-info" style="width: 35%;"></div>
-            <div class="bar bar-success" style="width: 20%;"></div>
+            <div class="bar bar-info" style="width: 35%;"><p><%= @average_pull%></p></div>
+            <div class="bar bar-success" style="width: 20%;"><p><%= @average_chill%></p></div>
         </div>
         <div class='friendswith'>
             <h3>Friends with</h3>
@@ -63,8 +64,13 @@
             <p>Pull</p>
             <div class='slider slider_pull'></div>
             <p class='results slider_pull_results'>5</p>
-            <input type="hidden" class="slider_pull"/>
-            <input type='submit' class='btn' value='vote'/>
+            <%= form_for @cprating do |f| %>
+                <input id="new_cprating_pull" name="cprating[pull]" type="hidden" class="slider_pull_form"/>
+                <input id="new_cprating_chill" name="cprating[chill]" type="hidden" class="slider_chill_form"/>
+                <input id="new_cprating_rush_id" name="cprating[rush_id]" type="hidden" value= <%= @rush.id %> >
+                <input id="new_cprating_user_id" name="cprating[user_id]" type="hidden" value= <%= current_user.id %> >
+                <%= f.submit 'vote', :class => 'btn' %>
+            <% end %>
         </article>
 
         <% if !@rush_comments.blank? %>

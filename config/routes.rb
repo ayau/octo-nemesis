@@ -2,6 +2,7 @@ RushApp::Application.routes.draw do
 
     resources :rush_comments
     resources :tags
+    resources :cpratings
 
     resources :sessions, only: [:new, :create, :destroy]
 
@@ -13,7 +14,7 @@ RushApp::Application.routes.draw do
 
     get "rushes/new"
     post 'rushes/new'
-
+    get "cpratings/new"
     get "users/new"
 
     resources :users do

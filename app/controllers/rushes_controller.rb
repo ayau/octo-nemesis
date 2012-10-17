@@ -15,10 +15,30 @@ class RushesController < ApplicationController
     end
     def show
         @rush = Rush.find(params[:id])
+        @average_pull = get_average_pull(@rush.cpratings)
+        @average_chill = get_average_chill(@rush.cpratings)
+        @cprating = Cprating.new
         @rush_comments = @rush.rush_comments
         @rush_comment = RushComment.new
     end
     def index
         @rushes = Rush.find :all
     end
+
+    def get_average_pull(cpratings)
+        total = 0
+        for cp in cpratings
+            total += cp.pull
+        end
+        return total/cpratings.length
+    end
+
+    def get_average_chill(cpratings)
+        total = 0
+        for cp in cpratings
+            total += cp.chill
+        end
+        return total/cpratings.length
+    end
+
 end

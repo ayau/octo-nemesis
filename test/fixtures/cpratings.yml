@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: cpratings
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  rush_id    :integer
+#  chill      :integer
+#  pull       :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  rush_id: 1
+  chill: 1
+  pull: 1
+
+two:
+  user_id: 1
+  rush_id: 1
+  chill: 1
+  pull: 1

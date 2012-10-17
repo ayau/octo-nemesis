@@ -6,14 +6,23 @@
 
 .rush {
     background: lighten($bgColor, 2);
-    box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.5); 
+    box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.4); 
     padding: 10px 20px;
     margin: 0px;
     border-radius: 5px;
     margin-bottom: 30px;
     clear:both;
+    position:relative;
     h1{
         margin: 10px 0px 20px;
+    }
+    .rank{
+        float:right;
+        position:absolute;
+        right: 25px;
+        top: 15px;
+        display:inline;
+        color: $accentColor;
     }
     .photo_container{
         float:left;
@@ -28,14 +37,16 @@
         position:absolute;
         left: 0px;
         top: 0px;
-        z-index: -1;
+        z-index: 1;
         background: #DDD;
-        box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.5);
+        box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.4);
     }
     .photo{
         border-radius: 5px;
         width: 100%;
         height: 100%;
+        z-index: 2;
+        position: absolute;
         background-repeat: no-repeat;
         background-size: 100% auto;
         background-position:center;
@@ -75,6 +86,11 @@
             .bar { 
                 height:30px;
                 float: left;
+            }
+            p{
+                font-size: 14px;
+                color: black;
+                margin-top: 5px;
             }
             .bar-success { background: #62c462;}
         }
@@ -117,6 +133,7 @@
                 word-wrap:break-word;
             }
             a{
+                font-weight: bold;
                 padding-right: 10px;
             }
             .edit_new_rush_comment{
@@ -124,6 +141,9 @@
                 textarea{
                     width: 400px;
                 }
+            }
+            button{
+                font-weight:bold;
             }
         }
         .new_comment{

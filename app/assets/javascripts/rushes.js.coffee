@@ -33,7 +33,11 @@
         ),
         # this updates the hidden form field so we can submit the data using a form
         change: ((event, ui) ->
-            $('#hidden').attr('value', ui.value)
+            if $(this).hasClass('slider_pull')
+                form = $('.slider_pull_form')
+            else
+                form = $('.slider_chill_form')
+            form.attr('value', ui.value)
         ))
 
         
