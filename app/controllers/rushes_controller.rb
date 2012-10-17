@@ -1,4 +1,7 @@
 class RushesController < ApplicationController
+
+    
+
     def new
         @rush = Rush.new
     end
@@ -21,6 +24,7 @@ class RushesController < ApplicationController
         @rush_comments = @rush.rush_comments
         @rush_comment = RushComment.new
         @current_rating = Cprating.where(:user_id=>current_user.id).where(:rush_id=>@rush.id).first
+        # @ranking = Rush.find_by_sql ""
         # @current_rating = Cprating.find(5)
         # @current_rating = Cprating.find_by_rush_id_and_user_id(@rush.id, current_user.id)
     end
