@@ -17,6 +17,13 @@ class RushesController < ApplicationController
                 render 'new'
             end
     end
+
+    def edit
+        @rush = Rush.find(params[:id])
+        @rush.update_attributes(params[:rush])
+        redirect_to Rush.find(@rush.id)  
+    end
+
     def show
         @rush = Rush.find(params[:id])
         @average_pull = get_average_pull(@rush.cpratings)
