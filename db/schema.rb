@@ -43,8 +43,8 @@ ActiveRecord::Schema.define(:version => 20121018203606) do
   end
 
   create_table "friendships", :force => true do |t|
-    t.integer  "rush_id"
-    t.integer  "friend_id"
+    t.integer "rush_id"
+    t.integer "friend_id"
   end
 
   create_table "rush_comments", :force => true do |t|
