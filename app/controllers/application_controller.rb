@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
     def authenticate
     	if(request.env['PATH_INFO'] != root_path && request.env['PATH_INFO'].index('/auth/facebook') != 0)
-        	redirect_to(root_path) unless !current_user.nil?
+        	redirect_to('/401.html') unless !current_user.nil?
         end
     end
 
