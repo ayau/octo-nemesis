@@ -3,6 +3,16 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
+    $('#edit_info_button').click ->
+        info = $(this).parent().parent()
+        info.find('.show').hide()
+        info.find('.hide').show()
+
+    $('#edit_info_button_cancel').click ->
+        info = $(this).parent().parent().parent()
+        info.find('.hide').hide()
+        info.find('.show').show()
+
     $('.edit_button').click ->
         comment = $(this).parent().parent()
         comment.find('.show').hide()

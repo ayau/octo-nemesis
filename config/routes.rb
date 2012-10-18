@@ -24,6 +24,7 @@ RushApp::Application.routes.draw do
     resources :rushes do
         member do
             get 'show'
+            post 'edit'
         end
     end
 
