@@ -33,6 +33,7 @@ class RushesController < ApplicationController
         @rush_comment = RushComment.new
         @current_rating = Cprating.where(:user_id=>current_user.id).where(:rush_id=>@rush.id).first
         @friends = @rush.friends
+        @rank = get_rank(@average_chill, @average_pull)
     end
 
     def index
@@ -47,6 +48,25 @@ class RushesController < ApplicationController
         @rush = Rush.find(params[:id])
         @rush.update_attributes(params[:rush])
         redirect_to @rush
+    end
+
+    def get_rank(chill, pull)
+        if chill > 4.5
+            return 'thisguymadchillbro'
+        end
+        if chill + pull > 7.5 || chill > 4
+            return 'toprush'
+        end
+        if pull > 4.5
+            return 'hepulls'
+        end
+        if chill + pull == 0
+            return 'notrated'
+        end
+        if chill + pull < 3
+            return 'fuckthiskid'
+        end
+        return 'seemsnice'
     end
 
     def get_average_pull(cpratings)

@@ -3,7 +3,7 @@
     <%= stylesheet_link_tag "application", "token-input-facebook" %>  
     <%= javascript_include_tag :defaults, "jquery.tokeninput" %>  
     <h1><%= @rush.name %></h1>
-    <h1 class='rank'>Rank #4</h1>
+    <h1 class='rank'>#<%= @rank %></h1>
 
     <% if @rush.photo.blank? %>
         <% logger.error { "qaghjqk"} %>
