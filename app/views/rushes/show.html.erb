@@ -1,4 +1,7 @@
 <section class='rush'>
+    <%= stylesheet_link_tag "application", "token-input" %> 
+    <%= stylesheet_link_tag "application", "token-input-facebook" %>  
+    <%= javascript_include_tag :defaults, "jquery.tokeninput" %>  
     <h1><%= @rush.name %></h1>
     <h1 class='rank'>Rank #4</h1>
     <article class='photo_container'>
@@ -32,10 +35,21 @@
         </div>
         <div class='friendswith'>
             <h3>Friends with</h3>
-            <ul>
-                <li><a>Joe</a></li>
-                <li><a>Jake</a></li>
-            </ul>
+            <article class='friend_show'>
+                <ul>
+                    <% for f in @friends %>
+                        <li><a href='/rushes/<%= f.id%>'><%= f.name%></a></li>
+                    <% end %>
+                </ul>
+                <input type='button' class='btn btn-info friend-btn' value='edit'/>
+            </article>
+            <article class='friend_form'>
+                <%= form_for @rush, :namespace => 'friend', :url => edit_friend_rush_path(@rush), :html => { :method => :post} do |f| %>  
+                    <%= f.text_field :friend_tokens, "data-pre" => @rush.friends.map(&:attributes).to_json %>   
+                    <input type='button' class='btn friend-cancel-btn' value='cancel'/>
+                    <%= f.submit 'submit', :class => 'btn btn-success' %>  
+                <% end %>
+            </article> 
         </div>
         <div class='attended'>
             <h3>Attended</h3>

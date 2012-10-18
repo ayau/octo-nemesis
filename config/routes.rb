@@ -24,6 +24,7 @@ RushApp::Application.routes.draw do
     resources :rushes do
         member do
             get 'show'
+            post 'edit_friend'
         end
     end
 
@@ -42,6 +43,17 @@ RushApp::Application.routes.draw do
 
     match "/auth/:provider/callback" => "sessions#create"
     match "/signout" => "sessions#destroy", :as => :signout
+
+    # API
+    namespace :api do
+        namespace :v1 do
+            resources :rushes do
+                collection do
+                    get 'search'
+                end
+            end
+        end
+    end
 
 
     # The priority is based upon order of creation:

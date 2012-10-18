@@ -45,6 +45,21 @@ $ ->
 
     $('.slider_chill').slider('value', $('.slider_chill_results').text())
 
+    $('#friend_rush_friend_tokens').tokenInput('/api/v1/rushes/search.json', { 
+        crossDomain: false,
+        prePopulate: $('#friend_rush_friend_tokens').data('pre'),
+        theme: 'facebook' 
+    })
+
+    $('.friend-btn').live 'click', ->
+        $('.friend_show').hide()
+        $('.friend_form').show()
+
+    $('.friend-cancel-btn').live 'click', ->
+        $('.friend_show').show()
+        $('.friend_form').hide()
+
+    console.log $('#friend_rush_friend_tokens').data()
 
     query = ''
     timer = null

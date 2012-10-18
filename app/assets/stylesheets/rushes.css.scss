@@ -54,6 +54,7 @@
 
     .info{
         float:left;
+        max-width: 450px;
         h3{
             line-height: 1;
             margin:5px 0px;
@@ -112,6 +113,19 @@
                     }
                 }
             }
+        }
+        .friend_form{
+            display: none;
+        }
+        .token-input-list-facebook{
+            width: 380px;
+        }
+        .friend-btn{
+            position:relative;
+            float: right;
+        }
+        .friend-cancel-btn{
+            margin: 5px 10px;
         }
     }
 
