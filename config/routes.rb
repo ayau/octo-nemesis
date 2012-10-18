@@ -49,6 +49,9 @@ RushApp::Application.routes.draw do
     namespace :api do
         namespace :v1 do
             resources :rushes do
+                member do
+                    get 'with_info'
+                end
                 collection do
                     get 'search'
                 end
