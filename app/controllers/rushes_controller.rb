@@ -50,7 +50,7 @@ class RushesController < ApplicationController
     end
 
     def get_average_pull(cpratings)
-        total = 0
+        total = 0.0
         for cp in cpratings
             if !cp.pull.nil?
                 total += cp.pull
@@ -59,12 +59,12 @@ class RushesController < ApplicationController
         if cpratings.length != 0
             return total/cpratings.length
         else 
-            return 0
+            return 0.0
         end
     end
 
     def get_average_chill(cpratings)
-        total = 0
+        total = 0.0
         for cp in cpratings
             if !cp.pull.nil?
                 total += cp.chill
@@ -73,7 +73,7 @@ class RushesController < ApplicationController
         if cpratings.length != 0
             return total/cpratings.length
         else
-            return 0
+            return 0.0
         end
     end
 
