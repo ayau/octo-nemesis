@@ -6,9 +6,10 @@
     <h1 class='rank'>Rank #4</h1>
 
     <% if @rush.photo.blank? %>
+        <% logger.error { "qaghjqk"} %>
         <% found_photo = getPictureForName(current_user.token,@rush.name) %>
         <% if !found_photo.blank? %>
-            <% @rush.photo = getPictureForName(current_user.token,@rush.name) %>
+            <% @rush.update_attribute(:photo, found_photo) %>
         <% end %>
     <% end %>
 
@@ -17,7 +18,7 @@
         <% if !@rush.photo.blank? %>
             <% photo_url = @rush.photo %>
         <% else %>
-            <% photo_url = "https://sphotos-a.xx.fbcdn.net/hphotos-ash4/374956_10151016320080437_1318987276_n.jpg" %>
+            <% photo_url = "http://www.bizsitesolutions.com/images/team/placeholder2.jpg" %>
         <% end %>
         <div class='photo' style='background-image: url(<%= photo_url %>) '></div>
     </article>
