@@ -1,5 +1,7 @@
 RushApp::Application.routes.draw do
 
+  resources :events
+
     resources :tags
 
     resources :sessions, only: [:new, :create, :destroy]

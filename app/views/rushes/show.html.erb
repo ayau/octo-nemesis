@@ -4,7 +4,6 @@
     <%= javascript_include_tag :defaults, "jquery.tokeninput" %>  
     <h1><%= @rush.name %></h1>
     <h1 class='rank'>#<%= @rank %></h1>
-
     <% if @rush.photo.blank? %>
         <% logger.error { "qaghjqk"} %>
         <% found_photo = getPictureForName(current_user.token,@rush.name) %>

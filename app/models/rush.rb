@@ -20,6 +20,9 @@ class Rush < ActiveRecord::Base
     has_many :rush_comments, dependent: :destroy
     has_many :cpratings
 
+    has_many :attendees, dependent: :destroy
+    has_many :events, through: :attendees
+
     has_and_belongs_to_many :friends,
                           :class_name => "Rush",
                           :join_table => "friendships",
@@ -37,4 +40,12 @@ class Rush < ActiveRecord::Base
     def friend_tokens=(ids)  
         self.friend_ids = ids.split(",")  
     end  
+
+    def attending_event?(event)
+        self.attendees.find_by_event_id(event.id)
+    end
+
+    def attend_event!(event)
+        self.attendees.create!(event_id: event.id)
+    end
 end

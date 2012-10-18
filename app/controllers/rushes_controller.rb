@@ -1,4 +1,5 @@
 class RushesController < ApplicationController
+
     include RushesHelper
 
     def new
