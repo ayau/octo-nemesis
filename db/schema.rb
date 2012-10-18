@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121018203606) do
+ActiveRecord::Schema.define(:version => 20121018222943) do
 
   create_table "attendees", :force => true do |t|
     t.integer  "event_id"
     t.integer  "rush_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   add_index "attendees", ["event_id", "rush_id"], :name => "index_attendees_on_event_id_and_rush_id", :unique => true
@@ -35,11 +36,12 @@ ActiveRecord::Schema.define(:version => 20121018203606) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
-    t.string   "date"
-    t.string   "location"
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string   "photo"
   end
 
   create_table "friendships", :force => true do |t|

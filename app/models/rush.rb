@@ -46,6 +46,6 @@ class Rush < ActiveRecord::Base
     end
 
     def attend_event!(event)
-        self.attendees.create!(event_id: event.id)
+        self.attendees.create!(event_id: event.id, user_id: current_user.id)
     end
 end

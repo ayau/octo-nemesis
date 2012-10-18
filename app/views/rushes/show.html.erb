@@ -87,8 +87,9 @@
         <div class='attended'>
             <h3>Attended</h3>
             <ul>
-                <li><a>Civy (10/03)</a></li>
-                <li><a>Animal Party</a></li>
+                <% for e in @events %>
+                    <li><a href='/events/<%=e.id%>'><%= e.name %></a></li>
+                <% end %>
             </ul>
         </div>
     </article>

@@ -33,6 +33,7 @@ class RushesController < ApplicationController
         @rush_comment = RushComment.new
         @current_rating = Cprating.where(:user_id=>current_user.id).where(:rush_id=>@rush.id).first
         @friends = @rush.friends
+        @events = @rush.events
         @rank = get_rank(@average_chill, @average_pull)
     end
 

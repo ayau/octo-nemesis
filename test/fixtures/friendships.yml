@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: friendships
+#
+#  id        :integer          not null, primary key
+#  rush_id   :integer
+#  friend_id :integer
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
