@@ -1,7 +1,5 @@
 class RushesController < ApplicationController
-
     
-
     def new
         @rush = Rush.new
     end
