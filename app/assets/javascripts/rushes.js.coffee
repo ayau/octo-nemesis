@@ -5,23 +5,23 @@
 $ ->
     # SHOW
 
-    $('#edit_info_button').click ->
-        info = $(this).parent().parent()
-        info.find('.show').hide()
-        info.find('.hide').show()
+    $('.edit_info_button').live 'click', ->
+        dl = $(this).parent().parent()
+        dl.find('.show').hide()
+        dl.find('.edit_rush_info').show()
 
-    $('#edit_info_button_cancel').click ->
-        info = $(this).parent().parent().parent()
-        info.find('.hide').hide()
-        info.find('.show').show()
+    $('.edit_info_button_cancel').live 'click', ->
+        dl = $(this).parent().parent()
+        dl.find('.edit_rush_info').hide()
+        dl.find('.show').show()
 
-    $('.edit_button').click ->
+    $('.edit_button').live 'click', ->
         comment = $(this).parent().parent()
         comment.find('.show').hide()
         comment.find('.buttons').hide()
         comment.find('.edit_new_rush_comment').show()
 
-    $('.edit_button_cancel').click ->
+    $('.edit_button_cancel').live 'click', ->
         comment = $(this).parent().parent()
         comment.find('.show').show()
         comment.find('.buttons').show()

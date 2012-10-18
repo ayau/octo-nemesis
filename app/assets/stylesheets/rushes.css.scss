@@ -65,6 +65,7 @@
             color: $secondaryColor;
             font-size: 18px;
             padding: 5px 0px;
+            min-height:28px;
         }
         dl{
             margin:0px;
@@ -100,7 +101,10 @@
             margin-left: 20px;
             margin-top: 10px;
             overflow:auto;
+            position:relative;
+            width: 490px;
             ul{
+                width: 400px;
                 margin: 0px 10px;
                 list-style: none;
                 li{
@@ -128,12 +132,22 @@
         .friend-cancel-btn{
             margin: 5px 10px;
         }
-        #edit_info_button {
-            margin-left:350px;
-            margin-top:-230px;
+        .edit_info_button {
+            position:relative;
+            float:right;
+            right: -60px;
+            top: -50px;
         }
-        #edit_info_button_cancel {
-            margin-left:162px;
+        .edit_rush_info{
+            display:none;
+            input[type='text']{
+                width: 300px;
+                margin: 0px;
+            }
+            .btn{
+                float:right;
+                margin: 2px 5px;
+            }
         }
     }
 

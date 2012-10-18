@@ -24,63 +24,40 @@
     </article>
     <article class='info'>
         <dl class="dl-horizontal">
-            <%= form_for( @rush, :namespace => 'edit_info', :url => edit_rush_path( @rush ), :html => { :method => :post, :class => "edit_rush_info" } ) do |f| %>
-            <dt><h3>Phone<h3></dt>
-            <dd>
-                <article class='show'>
+            <article class='show'>
+                <dt><h3>Phone<h3></dt>
+                <dd>
                     <% if @rush.phone.length == 10 %>
                         (<%= @rush.phone[0..2] %>)<%= @rush.phone[3..5] %>-<%= @rush.phone[6..9] %>
                     <% else %>
                         <%= @rush.phone %>
                     <% end %>
-                </article>
-                <article class='hide'>
-                    <input id="edit_rush_phone_field" name="rush[phone]" value="<%= @rush.phone %>" />
-                </article>
-            </dd>
-            <dt><h3>Email<h3></dt>
-            <dd>
-                <article class='show'>
-                    <%= @rush.email %>
-                </article>
-                <article class='hide'>
-                    <input id="edit_rush_email_field" name="rush[email]" value="<%= @rush.email %>" />
-                </article>
-            </dd>
-            <dt><h3>Residence<h3></dt>
-            <dd>
-                <article class='show'>
-                    <%= @rush.residence %>
-                </article>
-                <article class='hide'>
-                    <input id="edit_rush_residence_field" name="rush[residence]" value="<%= @rush.residence %>" />
-                </article>
-            </dd>
-            <dt><h3>From<h3></dt>
-            <dd>
-                <article class='show'>
-                    <%= @rush.origin %>
-                </article>
-                <article class='hide'>
-                    <input id="edit_rush_origin_field" name="rush[origin]" value="<%= @rush.origin %>" />
-                </article>
-            </dd>
-
-            <article class='hide'>
-                <dt><h3>Photo URL</h3></dt>
-                <dd>
-                    <input id="edit_rush_photo_url" name="rush[photo]" value="<%= @rush.photo %>" />
                 </dd>
+                <dt><h3>Email<h3></dt>
+                <dd><%= @rush.email %></dd>
+                <dt><h3>Residence<h3></dt>
+                <dd><%= @rush.residence %></dd>
+                <dt><h3>From<h3></dt>
+                <dd><%= @rush.origin %></dd>
+                <button class="edit_info_button btn btn-info">edit</button>
             </article>
 
-            <article class='hide'>
-                <input type='button' value='cancel' id='edit_info_button_cancel' class='btn'/>
-                <%= f.submit "submit", :class => 'btn', :id => 'edit_info_button_submit' %>
-            </article>
+            <%= form_for( @rush, :namespace => 'edit_info', :url => edit_rush_path( @rush ), :html => { :method => :post, :class => "edit_rush_info" } ) do |f| %>
+                <dt><h3>Phone<h3></dt>
+                <dd><input id="edit_rush_phone_field" type='text' name="rush[phone]" value="<%= @rush.phone %>" /></dd>
+                <dt><h3>Email<h3></dt>
+                <dd><input id="edit_rush_email_field" type='text'  name="rush[email]" value="<%= @rush.email %>" /></dd>
+                <dt><h3>Residence<h3></dt>
+                <dd><input id="edit_rush_residence_field" type='text'  name="rush[residence]" value="<%= @rush.residence %>" /></dd>
+                <dt><h3>From<h3></dt>
+                <dd><input id="edit_rush_origin_field" type='text'  name="rush[origin]" value="<%= @rush.origin %>" /></dd>
+                <dt><h3>Photo URL</h3></dt>
+                <dd><input id="edit_rush_photo_url" type='text'  name="rush[photo]" value="<%= @rush.photo %>" /></dd>
+                <%= f.submit "submit", :class => 'btn btn-success', :id => 'edit_info_button_submit' %>
+                <input type='button' value='cancel' class='edit_info_button_cancel btn'/>
             <% end %>
-            <article class='show'>
-                <button id="edit_info_button" class="btn">edit</button>
-            </article>
+
+
         </dl>
         <div class='chilltopull'>
             <span class='chill'>Chill</span>
