@@ -3,6 +3,8 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
+    # SHOW
+
     $('#edit_info_button').click ->
         info = $(this).parent().parent()
         info.find('.show').hide()
@@ -33,7 +35,6 @@ $ ->
         max: 5,
         step: 1,
  
-        # this gets a live reading of the value and prints it on the page
         slide: ((event, ui ) ->
             if $(this).hasClass('slider_pull')
                 results = $('.slider_pull_results')
@@ -41,7 +42,6 @@ $ ->
                 results = $('.slider_chill_results')
             results.html( ui.value )
         ),
-        # this updates the hidden form field so we can submit the data using a form
         change: ((event, ui) ->
             if $(this).hasClass('slider_pull')
                 form = $('#new_cprating_pull')
@@ -55,7 +55,7 @@ $ ->
 
     $('.slider_chill').slider('value', $('.slider_chill_results').text())
 
-    $('#friend_rush_friend_tokens').tokenInput('/api/v1/rushes/search.json', { 
+    $('#friend_rush_friend_tokens').tokenInput('/api/v1/rushes/search', { 
         crossDomain: false,
         prePopulate: $('#friend_rush_friend_tokens').data('pre'),
         theme: 'facebook' 
@@ -69,7 +69,9 @@ $ ->
         $('.friend_show').show()
         $('.friend_form').hide()
 
-    console.log $('#friend_rush_friend_tokens').data()
+    
+
+    # INDEX
 
     query = ''
     timer = null
