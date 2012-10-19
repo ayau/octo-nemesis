@@ -1,4 +1,15 @@
-<h1>Listing events</h1>
+<h1>Events</h1>
+
+<% for e in @events %>
+    <h3><%= e.name %></h3>
+    <% start_string = e.start_time.to_s %>
+    <% end_string = e.end_time.to_s %>
+    <% if !start_string.blank? && !end_string.blank? %>
+    <h4><%= start_string %> to <%= end_string %></h4>
+    <% end %>
+    <div class='photo' style='background-image: url(<%= e.photo %>) '></div>    
+    <p><%= e.description %></p>
+<% end %>
 
 <table>
   <tr>
