@@ -3,9 +3,15 @@
     <%= stylesheet_link_tag "application", "token-input-facebook" %>  
     <%= javascript_include_tag :defaults, "jquery.tokeninput" %>  
     <h1><%= @rush.name %></h1>
+
             <%= form_for @rush, :namespace => 'cut', :url => cut_rush_path(@rush), :html => { :method => :post} do |r| %>  
-                    <%= r.submit 'Cut', :confirm => 'Are you sure you want to cut this rush?', :class => 'btn btn-danger' %>  
+                <% if @rush.active == 1 %>
+                    <%= r.submit 'Cut', :confirm => 'FUCK THAT KID?', :class => 'btn btn-danger' %> 
+                <% else %>
+                     <%= r.submit 'Uncut', :class => 'btn btn-success' %>
+                <% end %>
             <% end %>
+
     <h1 class='rank'>#<%= @rank %></h1>
     <% if @rush.photo.blank? %>
         <% logger.error { "qaghjqk"} %>
