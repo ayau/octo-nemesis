@@ -51,4 +51,10 @@ class RushesController < ApplicationController
         redirect_to @rush
     end
 
+    def cut
+        @rush = Rush.find(params[:id])
+        @rush.update_attribute(:active, 0)
+        redirect_to '/rushes'
+    end
+
 end

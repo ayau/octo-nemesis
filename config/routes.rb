@@ -28,6 +28,7 @@ RushApp::Application.routes.draw do
             get 'show'
             post 'edit_friend'
             post 'edit'
+            post 'cut'
         end
     end
 

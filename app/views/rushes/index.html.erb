@@ -17,7 +17,7 @@
     <% if !@rushes.blank? %>
         <% i = 1 %>
         <% for rush in @rushes %>
-            <% if rush.name.length > 0 %>
+            <% if rush.name.length > 0 && rush.active == 1 %>
                 <tr onclick='window.location = "/rushes/<%=rush.id%>"'>
                     <td><%= i%></td>
                     <td class='first_name'><%= rush.name.split[0]%></td>

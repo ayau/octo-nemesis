@@ -3,6 +3,9 @@
     <%= stylesheet_link_tag "application", "token-input-facebook" %>  
     <%= javascript_include_tag :defaults, "jquery.tokeninput" %>  
     <h1><%= @rush.name %></h1>
+            <%= form_for @rush, :namespace => 'cut', :url => cut_rush_path(@rush), :html => { :method => :post} do |r| %>  
+                    <%= r.submit 'Cut', :confirm => 'Are you sure you want to cut this rush?', :class => 'btn btn-danger' %>  
+            <% end %>
     <h1 class='rank'>#<%= @rank %></h1>
     <% if @rush.photo.blank? %>
         <% logger.error { "qaghjqk"} %>
@@ -42,6 +45,8 @@
             </article>
 
             <%= form_for( @rush, :namespace => 'edit_info', :url => edit_rush_path( @rush ), :html => { :method => :post, :class => "edit_rush_info" } ) do |f| %>
+                <dt><h3>Name<h3></dt>
+                <dd><input id="edit_rush_name_field" type='text' name="rush[name]" value="<%= @rush.name %>" /></dd>
                 <dt><h3>Phone<h3></dt>
                 <dd><input id="edit_rush_phone_field" type='text' name="rush[phone]" value="<%= @rush.phone %>" /></dd>
                 <dt><h3>Email<h3></dt>
@@ -54,8 +59,8 @@
                 <dd><input id="edit_rush_photo_url" type='text'  name="rush[photo]" value="<%= @rush.photo %>" /></dd>
                 <%= f.submit "submit", :class => 'btn btn-success', :id => 'edit_info_button_submit' %>
                 <input type='button' value='cancel' class='edit_info_button_cancel btn'/>
+                
             <% end %>
-
 
         </dl>
         <div class='chilltopull'>
