@@ -12,33 +12,52 @@
             <h3>Connect with rushes</h3>
             <p>You should invite these people to lunch or something.. just saying.</p>
             <ul>
-                <li><img src='http://confluencemedia.com/wp-content/uploads/2011/03/2011-03-12-twitter-egg.png' class='avatar'/><a>Brandon</a> <span>(512) 325 - 5235</span></li>
-                <li><img src='http://confluencemedia.com/wp-content/uploads/2011/03/2011-03-12-twitter-egg.png' class='avatar'/><a>Joe</a></li>
-                <li><img src='http://confluencemedia.com/wp-content/uploads/2011/03/2011-03-12-twitter-egg.png' class='avatar'/><a>Sam</a></li>
-                <li><img src='http://confluencemedia.com/wp-content/uploads/2011/03/2011-03-12-twitter-egg.png' class='avatar'/><a>Random Person</a></li>
+                <% for r in @rushes %>
+                    <li>
+                        <% if !r.photo? %>
+                        <img src='http://confluencemedia.com/wp-content/uploads/2011/03/2011-03-12-twitter-egg.png' class='avatar'/>
+                        <% else %>
+                        <img src='<%= r.photo %>' class='avatar'/>
+                        <% end %>
+                        <a href='/rushes/<%= r.id %>'><%= r.name %></a> 
+                        <span>
+                        <% if r.phone.length == 10 %>
+                            (<%= r.phone[0..2] %>)<%= r.phone[3..5] %>-<%= r.phone[6..9] %>
+                        <% else %>
+                            <%= r.phone %>
+                        <% end %>
+                        </span>
+                    </li>
+                <% end %>
             </ul>
         </article>
-        <article class='event'>
-            <header>
-                <h3>Civy</h3>
-                <p class='date'>Thu (10/28)</p>
-            </header>
-            <div class='details'>
-                <p>10:30pm - 2:00am</p>
-                <p>There will be root beer. Please set up by 8:00 and invite rushes.</p>
-                <img class='photo' src='http://dictionaryproject.files.wordpress.com/2012/04/t300-red_solo_cup.jpg?w=500'/>
-                <div class='invited'>
-                    <p>20 rushes invited</p>
-                    <ul>
-                        <li><a>Brandon</a></li>
-                        <li><a>Joe</a></li>
-                        <li><a>Sam</a></li>
-                        <li><a>Random Person</a></li>
-                    </ul>
-                <input type='button' class='btn btn-success' value='invite'/>
+        <% for e in @events %>
+            <article class='event'>
+                <header>
+                    <h3><%= e.name %></h3>
+                    <p class='date'>Thu (10/28)</p>
+                </header>
+                <div class='details'>
+                    <p>10:30pm - 2:00am</p>
+                    <p><%= e.description %></p>
+                    <% if !e.photo? %>
+                        <img class='photo' src='http://dictionaryproject.files.wordpress.com/2012/04/t300-red_solo_cup.jpg?w=500'/>
+                    <% else %>
+                        <img class='photo' src='<%= e.photo %>'/>
+                    <% end %>
+                    <div class='invited'>
+                        <p>20 rushes invited</p>
+                        <ul>
+                            <li><a>Brandon</a></li>
+                            <li><a>Joe</a></li>
+                            <li><a>Sam</a></li>
+                            <li><a>Random Person</a></li>
+                        </ul>
+                    <input type='button' class='btn btn-success' value='invite'/>
+                    </div>
                 </div>
-            </div>
-        </article>
+            </article>
+        <% end %>
         <article class='event'>
             <header>
                 <h3>Civy</h3>
