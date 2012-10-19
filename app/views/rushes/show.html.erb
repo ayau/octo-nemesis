@@ -1,18 +1,18 @@
 <section class='rush'>
     <%= stylesheet_link_tag "application", "token-input" %> 
     <%= stylesheet_link_tag "application", "token-input-facebook" %>  
-    <%= javascript_include_tag :defaults, "jquery.tokeninput" %>  
-    <h1><%= @rush.name %></h1>
-
-            <%= form_for @rush, :namespace => 'cut', :url => cut_rush_path(@rush), :html => { :method => :post} do |r| %>  
-                <% if @rush.active == 1 %>
-                    <%= r.submit 'Cut', :confirm => 'FUCK THAT KID?', :class => 'btn btn-danger' %> 
-                <% else %>
-                     <%= r.submit 'Uncut', :class => 'btn btn-success' %>
-                <% end %>
+    <%= javascript_include_tag :defaults, "jquery.tokeninput" %> 
+    <header> 
+        <h1><%= @rush.name %></h1>
+        <%= form_for @rush, :namespace => 'cut', :url => cut_rush_path(@rush), :html => { :method => :post} do |r| %>  
+            <% if @rush.active == 1 %>
+                <%= r.submit 'Cut', :confirm => 'FUCK THAT KID?', :class => 'btn btn-danger' %> 
+            <% else %>
+                 <%= r.submit 'Uncut', :class => 'btn btn-success' %>
             <% end %>
-
-    <h1 class='rank'>#<%= @rank %></h1>
+        <% end %>
+        <h1 class='rank'>#<%= @rank %></h1>
+    </header>
     <% if @rush.photo.blank? %>
         <% logger.error { "qaghjqk"} %>
         <% found_photo = getPictureForName(current_user.token,@rush.name) %>

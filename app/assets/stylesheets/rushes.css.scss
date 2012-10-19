@@ -13,8 +13,20 @@
     margin-bottom: 30px;
     clear:both;
     position:relative;
+    header{
+        width: 100%;
+        overflow: auto;
+    }
     h1{
         margin: 10px 0px 20px;
+        float:left;
+    }
+    .edit_rush{
+        position: relative;
+        top: 15px;
+        margin-left: 20px;
+        // left: 430px;
+        float:left;
     }
     .rank{
         float:right;
