@@ -35,6 +35,7 @@
             <article class='event'>
                 <header>
                     <h3><%= e.name %></h3>
+                    <input type='button' class='edit_event btn btn-danger' value='edit' onclick='window.location = "/events/<%= e.id %>/edit"'/>
                     <p class='date'>Thu (10/28)</p>
                 </header>
                 <div class='details'>
@@ -61,6 +62,7 @@
         <article class='event'>
             <header>
                 <h3>Civy</h3>
+                <input type='button' class='edit_event btn btn-danger' value='edit' onclick='window.location = "/events/<%= e.id %>/edit"'/>
                 <p class='date'>Thu (10/28)</p>
             </header>
             <div class='details'>

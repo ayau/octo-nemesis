@@ -82,57 +82,62 @@
             font-size: 16px;
         }
     }
+}
 
-
-    .event{
-        position: relative;
-        padding: 10px;
-        margin: 20px auto;
-        width: 600px;
-        height:300px;
-        background: #FCFCFC;
-        border-radius: 3px;
-        box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.3);
-        header{
-            margin: 0px 20px;
-            border-bottom: 1px solid lighten($accentColor, 10);
-            overflow: auto;
-        }
-        h3{
-            float: left;
-            margin: 5px 0px;
-        }
-        .date{
-            font-size: 20px;
-            font-weight: bold;
-            float: right;
-            margin-top: 15px;
-        }
-        .details{
-            margin: 15px 20px 0px;
-        }
+.event{
+    position: relative;
+    padding: 10px;
+    margin: 20px auto;
+    width: 600px;
+    height:300px;
+    background: #FCFCFC;
+    border-radius: 3px;
+    box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.3);
+    header{
+        margin: 0px 20px;
+        border-bottom: 1px solid lighten($accentColor, 10);
+        overflow: auto;
+    }
+    h3{
+        float: left;
+        margin: 5px 0px;
+    }
+    .date{
+        font-size: 20px;
+        font-weight: bold;
+        float: right;
+        margin-top: 15px;
+    }
+    .details{
+        margin: 15px 20px 0px;
+    }
+    p{
+        font-size: 18px;
+    }
+    .photo{
+        float:left;
+        margin: 10px; 
+        height:100px; 
+        width: auto;
+    }
+    .invited{
+        float:right;
+        padding: 15px;
         p{
-            font-size: 18px;
+            font-weight: bold;
+            font-size: 16px;
         }
-        .photo{
-            float:left;
-            margin: 10px; 
-            height:100px; 
-            width: auto;
+        ul{
+            margin-left: 20px;
         }
-        .invited{
-            float:right;
-            padding: 15px;
-            p{
-                font-weight: bold;
-                font-size: 16px;
-            }
-            ul{
-                margin-left: 20px;
-            }
-            input{
-                float: right;
-            }
+        input{
+            float: right;
         }
+    }
+    
+    .edit_event{
+        float: right;
+        margin-top: 10px;
+        margin-left: 10px;
     }
 }

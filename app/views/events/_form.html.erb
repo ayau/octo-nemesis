@@ -1,34 +1,41 @@
-<%= form_for(@event) do |f| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+<%= form_for @event, :html => { :class => 'form-horizontal'} do |f| %>
+    <% if @event.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-      <ul>
-      <% @event.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+            <ul>
+            <% @event.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class='control-group'>
+        <%= f.label :name, :class => 'control-label' %>
+        <div class='controls'>
+            <%= f.text_field :name %>
+        </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
  
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
+    <div class="control-group">
+        <%= f.label :description, :class => 'control-label' %>
+        <div class='controls'>
+            <%= f.text_field :description %>
+        </div>
+    </div>
 
-   <div class="field">
-    <%= f.label :photo %><br />
-    <%= f.text_field :photo %>
-  </div>
+     <div class="control-group">
+        <%= f.label :photo, :class => 'control-label' %>
+        <div class='controls'>
+            <%= f.text_field :photo %>
+        </div>
+    </div>
 
 <!-- Do date picker objects for start_time and end_time -->
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+        <%= f.submit 'submit', :class => 'btn btn-success' %>
+    </div>
 <% end %>
+

@@ -1,42 +1,47 @@
-<h1>Events</h1>
-
-<% for e in @events %>
-    <h3><%= e.name %></h3>
-    <% start_string = e.start_time.to_s %>
-    <% end_string = e.end_time.to_s %>
-    <% if !start_string.blank? && !end_string.blank? %>
-    <h4><%= start_string %> to <%= end_string %></h4>
+<section class='events'>
+    <%= stylesheet_link_tag "application", "pages" %> 
+    <center>
+        <h1>Events</h1>
+        <input type='button' class='add_event btn btn-large btn-primary' value='Add event' onclick='window.location = "/events/new"'/>
+        <!-- <p id="notice"><%= notice %></p> -->
+    </center>
+<!--     <% for e in @events %>
+        <h3><%= e.name %></h3>
+        <% start_string = e.start_time.to_s %>
+        <% end_string = e.end_time.to_s %>
+        <% if !start_string.blank? && !end_string.blank? %>
+        <h4><%= start_string %> to <%= end_string %></h4>
+        <% end %>
+        <div class='photo' style='background-image: url(<%= e.photo %>) '></div>    
+        <p><%= e.description %></p>
     <% end %>
-    <div class='photo' style='background-image: url(<%= e.photo %>) '></div>    
-    <p><%= e.description %></p>
-<% end %>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Start Time</th>
-    <th>End Time</th>
-    <th>Photo</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @events.each do |event| %>
-  <tr>
-    <td><%= event.name %></td>
-    <td><%= event.description %></td>
-    <td><%= event.start_time %></td>
-    <td><%= event.end_time %></td>
-    <td><%= event.photo %></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Event', new_event_path %>
+ -->
+    <% for e in @events %>
+        <article class='event'>
+            <header>
+                <h3><%= e.name %></h3>
+                <input type='button' class='edit_event btn btn-danger' value='edit' onclick='window.location = "/events/<%= e.id %>/edit"'/>
+                <p class='date'>Thu (10/28)</p>
+            </header>
+            <div class='details'>
+                <p>10:30pm - 2:00am</p>
+                <p><%= e.description %></p>
+                <% if !e.photo? %>
+                    <img class='photo' src='http://dictionaryproject.files.wordpress.com/2012/04/t300-red_solo_cup.jpg?w=500'/>
+                <% else %>
+                    <img class='photo' src='<%= e.photo %>'/>
+                <% end %>
+                <div class='invited'>
+                    <p>20 rushes invited</p>
+                    <ul>
+                        <li><a>Brandon</a></li>
+                        <li><a>Joe</a></li>
+                        <li><a>Sam</a></li>
+                        <li><a>Random Person</a></li>
+                    </ul>
+                <input type='button' class='btn btn-success' value='invite'/>
+                </div>
+            </div>
+        </article>
+    <% end %>
+</section>

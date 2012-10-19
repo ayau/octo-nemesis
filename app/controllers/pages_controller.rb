@@ -1,6 +1,4 @@
-class PagesController < ApplicationController
-
-	
+class PagesController < ApplicationController	
 
     def home
         @rushes = Rush.order("RANDOM()").limit(4)
