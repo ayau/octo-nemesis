@@ -35,14 +35,25 @@
     <div class="control-group">
         <%= f.label :start_time, :class => 'control-label' %>
         <div class='controls'>
-            <%= f.text_field :start_time, :class => 'timepicker', :value => @event.start_time.to_formatted_s(:long) %>
+            <% if @event.start_time %>
+                <% value = @event.start_time.to_formatted_s(:long) %>
+            <% else %>
+                <% value = "" %>
+            <% end %>
+            <%= f.text_field :start_time, :class => 'timepicker', :value => value%>
+
         </div>
     </div>
 
     <div class="control-group">
         <%= f.label :end_time, :class => 'control-label' %>
         <div class='controls'>
-            <%= f.text_field :end_time, :class => 'timepicker', :value => @event.end_time.to_time.to_formatted_s(:long) %>
+            <% if @event.start_time %>
+                <% value = @event.start_time.to_formatted_s(:long) %>
+            <% else %>
+                <% value = "" %>
+            <% end %>
+            <%= f.text_field :end_time, :class => 'timepicker', :value => value %>
         </div>
     </div>
 
