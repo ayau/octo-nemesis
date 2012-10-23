@@ -78,11 +78,16 @@ $ ->
     results = []
     table = null
 
+    visible = null
+
     $('.search-rushes').keyup ()->
         query = $('.search-rushes').val().toLowerCase()
         search(query)
 
-    search = (query) ->       
+    search = (query, callback) ->
+        visible = null
+        count = 0 # counts number of queries
+       
         table = $('.table')
         table.find('tr').each ->
             if query.length == 0 || $(this).hasClass('header')
@@ -93,5 +98,52 @@ $ ->
 
             if first_name.indexOf(query) >= 0 || last_name.indexOf(query) >= 0 || (first_name + ' ' + last_name).indexOf(query) >= 0
                 $(this).show()
+                visible = $(this)
+                count += 1
             else
                 $(this).hide()
+
+        callback(count) if callback?
+
+    # When url has ?q=xxx parameter
+    init = (param) ->
+        if param.indexOf('?q=') isnt 0
+            return
+        
+        query = param.substring(3)
+        query = query.toLowerCase()
+        if query.length is 0
+            return
+
+        $('.search-rushes').val(query)
+
+        search query, (count) ->
+            if count is 1
+                visible.click()
+            else if count is 0
+                window.location = '/rushes/new?name=' + query
+
+    init(location.search)
+
+
+    # NEW
+    init_new = (param) ->
+        if param.indexOf('?name=') isnt 0
+            $('#rush_name').focus()
+            return
+        
+        query = param.substring(6)
+        queries = query.split('+') 
+        for q in queries
+            q = q.replace(/[^A-Za-z0-9]/g, '')
+        query = queries.join(' ')
+
+        if query.length is 0
+            $('#rush_name').focus()
+            return
+
+        $('#rush_name').val(query)
+        $('#rush_phone').focus()
+
+    init_new(location.search)
+
