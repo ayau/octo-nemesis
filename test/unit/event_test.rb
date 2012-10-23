@@ -10,6 +10,7 @@
 #  start_time  :datetime
 #  end_time    :datetime
 #  photo       :string(255)
+#  date        :text
 #
 
 require 'test_helper'
