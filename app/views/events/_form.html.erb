@@ -21,11 +21,32 @@
     <div class="control-group">
         <%= f.label :description, :class => 'control-label' %>
         <div class='controls'>
-            <%= f.text_field :description, :placeholder => 'description' %>
+            <%= f.text_area :description, :placeholder => 'description' %>
         </div>
     </div>
 
-     <div class="control-group">
+    <div class="control-group">
+        <%= f.label :date, :class => 'control-label' %>
+        <div class='controls'>
+            <%= f.text_field :date, :class => 'datepicker' %>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <%= f.label :start_time, :class => 'control-label' %>
+        <div class='controls'>
+            <%= f.text_field :start_time, :class => 'timepicker' %>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <%= f.label :end_time, :class => 'control-label' %>
+        <div class='controls'>
+            <%= f.text_field :end_time, :class => 'timepicker' %>
+        </div>
+    </div>
+
+    <div class="control-group">
         <%= f.label :photo, :class => 'control-label' %>
         <div class='controls'>
             <%= f.text_field :photo, :placeholder => 'photo url (Optional)' %>

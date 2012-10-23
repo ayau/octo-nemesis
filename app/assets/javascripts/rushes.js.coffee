@@ -78,8 +78,8 @@ $ ->
     results = []
     table = null
 
-    $('.search-query').keyup ()->
-        query = $('.search-query').val().toLowerCase()
+    $('.search-rushes').keyup ()->
+        query = $('.search-rushes').val().toLowerCase()
         search(query)
 
     search = (query) ->       
