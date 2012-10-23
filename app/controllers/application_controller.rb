@@ -5,9 +5,15 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate 
 
     def authenticate
-    	if(request.env['PATH_INFO'] != root_path && request.env['PATH_INFO'].index('/auth/facebook') != 0)
-        	redirect_to('/401.html') unless !current_user.nil?
+      if(current_user.nil?) 
+    	 if(request.env['PATH_INFO'] != loggedout_path && request.env['PATH_INFO'].index('/auth/facebook') != 0)
+          if(request.env['PATH_INFO'] == root_path)
+             redirect_to(loggedout_path)
+          else
+        	   redirect_to('/401.html')
+          end
         end
+      end
     end
 
   helper_method :current_user

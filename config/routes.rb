@@ -8,6 +8,8 @@ RushApp::Application.routes.draw do
 
     root to: 'pages#home'
 
+    match '/loggedout' => "pages#loggedout"
+
     get "tags/new"
 
     get "rush_comments/new"
