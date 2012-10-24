@@ -28,7 +28,7 @@
     <div class="control-group">
         <%= f.label :date, :class => 'control-label' %>
         <div class='controls'>
-            <%= f.text_field :date, :class => 'datepicker', :value => @event.date %>
+            <%= f.text_field :date, :class => 'datepicker', :value => @event.date, :placeholder => 'date of event' %>
         </div>
     </div>
 
@@ -40,8 +40,7 @@
             <% else %>
                 <% value = "" %>
             <% end %>
-            <%= f.text_field :start_time, :class => 'starttime', :value => value%>
-
+            <%= f.text_field :start_time, :class => 'starttime', :value => value, :placeholder => 'start time'%>
         </div>
     </div>
 
@@ -53,7 +52,7 @@
             <% else %>
                 <% value = "" %>
             <% end %>
-            <%= f.text_field :end_time, :class => 'endtime', :value => value %>
+            <%= f.text_field :end_time, :class => 'endtime', :value => value, :placeholder => 'end time' %>
         </div>
     </div>
 
