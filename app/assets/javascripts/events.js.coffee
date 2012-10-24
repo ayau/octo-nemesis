@@ -24,3 +24,6 @@ $ ->
         'durationTime': $('.starttime').val()
         'showDuration': true
     })
+
+    $('.datepicker').keydown (e) ->
+        return false
