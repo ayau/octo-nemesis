@@ -22,6 +22,12 @@
         height: 80px;
         resize: none;
     }
+    .ui-datepicker-trigger{
+        height: 30px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
 }
 
 .events{

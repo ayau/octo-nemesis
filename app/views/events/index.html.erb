@@ -21,7 +21,7 @@
             <header>
                 <h3><%= e.name %></h3>
                 <input type='button' class='edit_event btn btn-danger' value='edit' onclick='window.location = "/events/<%= e.id %>/edit"'/>
-                                    <% if !e.date || !e.start_time || !e.end_time %>
+                    <% if !e.date || !e.start_time || !e.end_time %>
                     <% else %>
                         <p class='date'>  <%= e.date %>, <%= e.start_time.strftime("%I:%M%p") %> - <%= e.end_time.strftime("%I:%M%p") %></p>
                     <% end %>
@@ -34,7 +34,7 @@
                 <% else %>
                     <img class='photo' src='<%= e.photo %>'/>
                 <% end %>
-                <div class='invited'>
+                <div class='invited' style='display: none'>
                     <p>20 rushes invited</p>
                     <ul>
                         <li><a>Brandon</a></li>

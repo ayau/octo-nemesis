@@ -36,11 +36,11 @@
         <%= f.label :start_time, :class => 'control-label' %>
         <div class='controls'>
             <% if @event.start_time %>
-                <% value = @event.start_time.to_formatted_s(:long) %>
+                <% value = @event.start_time.strftime('%l:%M%P') %>
             <% else %>
                 <% value = "" %>
             <% end %>
-            <%= f.text_field :start_time, :class => 'timepicker', :value => value%>
+            <%= f.text_field :start_time, :class => 'starttime', :value => value%>
 
         </div>
     </div>
@@ -48,12 +48,12 @@
     <div class="control-group">
         <%= f.label :end_time, :class => 'control-label' %>
         <div class='controls'>
-            <% if @event.start_time %>
-                <% value = @event.start_time.to_formatted_s(:long) %>
+            <% if @event.end_time %>
+                <% value = @event.end_time.strftime('%l:%M%P') %>
             <% else %>
                 <% value = "" %>
             <% end %>
-            <%= f.text_field :end_time, :class => 'timepicker', :value => value %>
+            <%= f.text_field :end_time, :class => 'endtime', :value => value %>
         </div>
     </div>
 

@@ -75,6 +75,7 @@
             height: 50px;
             width: auto;
             margin-right: 10px;
+            box-shadow: 1px 1px 1px rgba(0,0,0,0.7);
         }
         span{
             color: #666;
@@ -121,8 +122,9 @@
         font-size: 18px;
     }
     .photo{
-        float:left;
-        margin: 10px; 
+        position: absolute;
+        bottom: 20px;
+        left: 20px; 
         height:100px; 
         width: auto;
     }
