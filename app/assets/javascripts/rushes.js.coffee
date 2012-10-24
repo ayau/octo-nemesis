@@ -112,6 +112,12 @@ $ ->
         
         query = param.substring(3)
         query = query.toLowerCase()
+        
+        queries = query.split('+') 
+        for q in queries
+            q = q.replace(/[^A-Za-z0-9]/g, '')
+        query = queries.join(' ')
+        
         if query.length is 0
             return
 
