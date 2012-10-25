@@ -22,8 +22,8 @@
                     <td><%= i%></td>
                     <td class='first_name'><%= rush.name.split[0]%></td>
                     <td class='last_name'><%= rush.name.split[1..-1].join(' ')%></td>
-                    <th><%= @RushesController.get_average_chill(rush.cpratings) %></th>
-                    <th><%= @RushesController.get_average_pull(rush.cpratings) %></th>
+                    <th><%= '%.1f' % @RushesController.get_average_chill(rush.cpratings) %></th>
+                    <th><%= '%.1f' % @RushesController.get_average_pull(rush.cpratings) %></th>
                 </tr>
                 <% i += 1 %>
             <% end %>
@@ -51,8 +51,8 @@
                     <td><%= i%></td>
                     <td class='first_name'><%= rush.name.split[0]%></td>
                     <td class='last_name'><%= rush.name.split[1..-1].join(' ')%></td>
-                    <th><%= @RushesController.get_average_chill(rush.cpratings) %></th>
-                    <th><%= @RushesController.get_average_pull(rush.cpratings) %></th>
+                    <th><%= '%.1f' % @RushesController.get_average_chill(rush.cpratings) %></th>
+                    <th><%= '%.1f' % @RushesController.get_average_pull(rush.cpratings) %></th>
                 </tr>
                 <% i += 1 %>
             <% end %>
