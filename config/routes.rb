@@ -1,6 +1,6 @@
 RushApp::Application.routes.draw do
 
-  resources :events
+    resources :events
 
     resources :tags
 
@@ -10,6 +10,8 @@ RushApp::Application.routes.draw do
 
     match '/loggedout' => "pages#loggedout"
 
+    match '/donthackmebro' => "sessions#hack"
+
     get "tags/new"
 
     get "rush_comments/new"
@@ -18,6 +20,7 @@ RushApp::Application.routes.draw do
     post 'rushes/new'
     get "cpratings/new"
     get "users/new"
+
 
     resources :users do
         member do
