@@ -52,7 +52,7 @@ class SessionsController < ApplicationController
         auth = request.env["omniauth.auth"]
         # Only allow approved user_ids to make an account/login
         if approved_uids.include? auth["uid"]
-            user = User.find_by_uid_and_token(auth["uid"],auth["credentials"]["token"]) || User.create_with_omniauth(auth)
+            user = User.find_by_uid(auth["uid"]) || User.create_with_omniauth(auth)
             session[:user_id] = user.id
             if user
                 sign_in user
