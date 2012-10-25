@@ -4,7 +4,7 @@ module UsersHelper
         graph = Koala::Facebook::GraphAPI.new(user_token)
         facebook_friends = graph.get_connections("me", "friends", :fields =>"name,picture.type(large)")
         facebook_friends.each do |fa|
-            if (fa["name"] == rush_name)
+            if (fa["name"].downcase == rush_name.downcase)
                 return fa["picture"]["data"]["url"]
             end
         end

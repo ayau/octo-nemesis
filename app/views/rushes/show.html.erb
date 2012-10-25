@@ -14,7 +14,6 @@
         <h1 class='rank'>#<%= @rank %></h1>
     </header>
     <% if @rush.photo.blank? %>
-        <% logger.error { "qaghjqk"} %>
         <% found_photo = getPictureForName(current_user.token,@rush.name) %>
         <% if !found_photo.blank? %>
             <% @rush.update_attribute(:photo, found_photo) %>
@@ -95,14 +94,14 @@
                 <% end %>
             </article> 
         </div>
-        <div class='attended'>
+        <!-- <div class='attended'>
             <h3>Attended</h3>
             <ul>
                 <% for e in @events %>
                     <li><a href='/events/<%=e.id%>'><%= e.name %></a></li>
                 <% end %>
             </ul>
-        </div>
+        </div> -->
     </article>
     <article class='comments'>
         <%= form_for @rush_comment do |f| %>
