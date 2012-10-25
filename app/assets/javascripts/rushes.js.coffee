@@ -139,10 +139,17 @@ $ ->
             return
         
         query = param.substring(6)
-        queries = query.split('+') 
+        query = unescape(query)
+        queries = query.split(' ')
+        
+        query = ''
+
         for q in queries
             q = q.replace(/[^A-Za-z0-9]/g, '')
-        query = queries.join(' ')
+            q = q.charAt(0).toUpperCase() + q.substr(1)
+            if query.length > 0
+                query += ' '
+            query += q
 
         if query.length is 0
             $('#rush_name').focus()
