@@ -2,6 +2,7 @@ class EventsController < ApplicationController
 
     def index
         @events = Event.all
+        @events = Event.all(:order => 'start_time ASC', :conditions => ['start_time >= ?',DateTime.now])
     end
 
     def show
@@ -20,8 +21,14 @@ class EventsController < ApplicationController
     # POST /events
     # POST /events.json
     def create
+
+        if params[:event][:date] != "" && params[:event][:start_time] != ""
+            actual_date = DateTime.strptime(params[:event][:date],'%d %B %Y')
+            actual_time = DateTime.strptime(params[:event][:start_time],'%l:%M%P')
+            params[:event][:start_time] = DateTime.new(actual_date.year,actual_date.mon,actual_date.mday,actual_time.hour,actual_time.min)
+        end
         @event = Event.new(params[:event])
-        
+
         respond_to do |format|
             if @event.save
                 format.html { redirect_to events_path, notice: 'Event was successfully created.' }
@@ -35,6 +42,15 @@ class EventsController < ApplicationController
     # PUT /events/1.json
     def update
         @event = Event.find(params[:id])
+
+        if params[:event][:date] != "" && params[:event][:start_time] != ""
+            actual_date = DateTime.strptime(params[:event][:date],'%d %B %Y')
+            actual_time = DateTime.strptime(params[:event][:start_time],'%l:%M%P')
+            params[:event][:start_time] = DateTime.new(actual_date.year,actual_date.mon,actual_date.mday,actual_time.hour,actual_time.min)
+        end
+
+        logger.error {"zxc"}
+        logger.error {params[:event]}
 
         respond_to do |format|
             if @event.update_attributes(params[:event])

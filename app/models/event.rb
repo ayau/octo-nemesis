@@ -19,6 +19,12 @@ class Event < ActiveRecord::Base
     has_many :attendees, dependent: :destroy
     has_many :rushes, through: :attendees
     
+    validates :name, presence: true
+    validates :date, presence: true
+    validates :start_time, presence: true
+    validates :end_time, presence: true
+
+
     def rush_attending?(rush)
         self.attendees.find_by_rush_id(rush.id)
     end
