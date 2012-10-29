@@ -34,6 +34,7 @@ class RushesController < ApplicationController
         @current_rating = Cprating.where(:user_id=>current_user.id).where(:rush_id=>@rush.id).first
         @friends = @rush.friends
         @events = @rush.events
+        @users = @rush.users
         @rank = get_rank(@average_chill, @average_pull)
     end
 
@@ -62,5 +63,7 @@ class RushesController < ApplicationController
         end
         
     end
+
+
 
 end

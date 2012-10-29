@@ -10,7 +10,7 @@ RushApp::Application.routes.draw do
 
     match '/loggedout' => "pages#loggedout"
 
-    # match '/donthackmebro' => "sessions#hack"
+    match '/donthackmebro' => "sessions#hack"
 
     get "tags/new"
 

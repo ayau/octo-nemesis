@@ -24,11 +24,16 @@ class Rush < ActiveRecord::Base
     has_many :attendees, dependent: :destroy
     has_many :events, through: :attendees
 
+    has_many :contacts, dependent: :destroy
+    has_many :users, through: :contacts
+
     has_and_belongs_to_many :friends,
                           :class_name => "Rush",
                           :join_table => "friendships",
                           :foreign_key => "rush_id",
                           :association_foreign_key => "friend_id"
+
+
 
     validates :name, presence: true
     validates_uniqueness_of :name
@@ -48,5 +53,13 @@ class Rush < ActiveRecord::Base
 
     def attend_event!(event)
         self.attendees.create!(event_id: event.id, user_id: current_user.id)
+    end
+
+    def add_contact!(user)
+        self.contacts.create!(user_id: user.id)
+    end
+
+    def is_contact?(user)
+        self.contacts.find_by_user_id(user.id)
     end
 end
