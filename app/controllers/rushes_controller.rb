@@ -34,12 +34,13 @@ class RushesController < ApplicationController
         @current_rating = Cprating.where(:user_id=>current_user.id).where(:rush_id=>@rush.id).first
         @friends = @rush.friends
         @events = @rush.events
+        @users = @rush.users
         @rank = get_rank(@average_chill, @average_pull)
     end
 
     def index
         @rushes = Rush.find_by_sql "select * from rushes as r 
-                                    left join (select rush_id, avg(chill) as avg_chill from cpratings group by rush_id) as c 
+                                    left join (select rush_id, COALESCE(avg(chill),0.0) as avg_chill from cpratings group by rush_id) as c 
                                         on c.rush_id = r.id 
                                         order by c.avg_chill DESC"
         @RushesController = self
@@ -48,6 +49,24 @@ class RushesController < ApplicationController
     def edit_friend
         @rush = Rush.find(params[:id])
         @rush.update_attributes(params[:rush])
+        redirect_to @rush
+    end
+
+    def edit_contact
+        @rush = Rush.find(params[:id])
+        r = params[:rush]
+        arr = r['contacts'].split(",")
+        contacts = []
+        for c in arr
+            contact = Contact.new
+            att = {}
+            att['user_id'] = c.to_i()
+            att['rush_id'] = @rush.id
+            contact.update_attributes(att)
+            contacts.push(contact)
+        end
+        r['contacts'] = contacts
+        @rush.update_attributes(r)
         redirect_to @rush
     end
 
@@ -62,5 +81,7 @@ class RushesController < ApplicationController
         end
         
     end
+
+
 
 end

@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
     def index
-        @events = Event.all
+        # @events = Event.all
         @events = Event.all(:order => 'start_time ASC', :conditions => ['start_time >= ?',DateTime.now])
     end
 
@@ -66,6 +66,7 @@ class EventsController < ApplicationController
     # DELETE /events/1
     # DELETE /events/1.json
     def destroy
+        logger.error{'zxc'}
         @event = Event.find(params[:id])
         @event.destroy
 

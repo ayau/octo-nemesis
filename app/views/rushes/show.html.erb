@@ -73,8 +73,8 @@
             <span class='pull'>Pull</span>
         </div>
         <div class="progress">
-            <div class="bar bar-info" style="width: <%=@average_chill*10%>%;"><p><%= @average_chill%></p></div>
-            <div class="bar bar-success" style="width: <%=@average_pull*10%>%;"><p><%= @average_pull%></p></div>
+            <div class="bar bar-info" style="width: <%=@average_chill*10%>%;"><p><%= '%.1f' % @average_chill%></p></div>
+            <div class="bar bar-success" style="width: <%=@average_pull*10%>%;"><p><%= '%.1f' % @average_pull%></p></div>
         </div>
         <div class='friendswith'>
             <h3>Friends with</h3>
@@ -90,6 +90,24 @@
                 <%= form_for @rush, :namespace => 'friend', :url => edit_friend_rush_path(@rush), :html => { :method => :post} do |f| %>  
                     <%= f.text_field :friend_tokens, "data-pre" => @rush.friends.map(&:attributes).to_json %>   
                     <input type='button' class='btn friend-cancel-btn' value='cancel'/>
+                    <%= f.submit 'submit', :class => 'btn btn-success' %>  
+                <% end %>
+            </article> 
+        </div>
+        <div class='brothercontact'>
+            <h3>Brother contact</h3>
+            <article class='contact_show'>
+                <ul>
+                    <% for c in @users %>
+                        <li><a href='/users/<%= c.id%>'><%= c.name %></a></li>
+                    <% end %>
+                </ul>
+                <input type='button' class='btn btn-info contact-btn' value='edit'/>
+            </article>
+            <article class='contact_form'>
+                <%= form_for @rush, :namespace => 'contact', :url => edit_contact_rush_path(@rush), :html => { :method => :post} do |f| %>  
+                    <%= f.text_field :contacts, "data-pre" => @users.map(&:attributes).to_json %>   
+                    <input type='button' class='btn contact-cancel-btn' value='cancel'/>
                     <%= f.submit 'submit', :class => 'btn btn-success' %>  
                 <% end %>
             </article> 

@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
 
     before_save :create_remember_token
 
+    has_many :contacts, dependent: :destroy
+    has_many :rushes, through: :contacts
+
+
     validates :name, presence: true
     validates :uid, presence: true
     validates :token, presence: true
@@ -31,6 +35,10 @@ class User < ActiveRecord::Base
     	user.phone = auth["info"]["phone"]
   		end	
 	end
+
+    def has_rush?(rush)
+        self.contacts.find_by_rush_id(rush.id)
+    end
 
 	private
 		def create_remember_token
