@@ -52,6 +52,24 @@ class RushesController < ApplicationController
         redirect_to @rush
     end
 
+    def edit_contact
+        @rush = Rush.find(params[:id])
+        r = params[:rush]
+        arr = r['contacts'].split(",")
+        contacts = []
+        for c in arr
+            contact = Contact.new
+            att = {}
+            att['user_id'] = c.to_i()
+            att['rush_id'] = @rush.id
+            contact.update_attributes(att)
+            contacts.push(contact)
+        end
+        r['contacts'] = contacts
+        @rush.update_attributes(r)
+        redirect_to @rush
+    end
+
     def cut
         @rush = Rush.find(params[:id])
         if @rush.active == 1

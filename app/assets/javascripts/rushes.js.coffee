@@ -69,6 +69,20 @@ $ ->
         $('.friend_show').show()
         $('.friend_form').hide()
 
+    $('.contact-btn').live 'click', ->
+        $('.contact_show').hide()
+        $('.contact_form').show()
+
+    $('.contact-cancel-btn').live 'click', ->
+        $('.contact_show').show()
+        $('.contact_form').hide()
+
+    $('#contact_rush_contacts').tokenInput('/api/v1/users/search', { 
+        crossDomain: false,
+        prePopulate: $('#contact_rush_contacts').data('pre'),
+        theme: 'facebook' 
+    })
+
     
 
     # INDEX

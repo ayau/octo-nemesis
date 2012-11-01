@@ -32,6 +32,7 @@ RushApp::Application.routes.draw do
         member do
             get 'show'
             post 'edit_friend'
+            post 'edit_contact'
             post 'edit'
             post 'cut'
         end
@@ -60,6 +61,11 @@ RushApp::Application.routes.draw do
                 member do
                     get 'with_info'
                 end
+                collection do
+                    get 'search'
+                end
+            end
+            resources :users do
                 collection do
                     get 'search'
                 end
