@@ -7,3 +7,7 @@
 <li><%= @user.phone %></li>
 <% end %>
 </ul> -->
+<p>You are the primary contact of:</p>
+<% for rush in @user.rushes %>
+<p><a href = '/rushes/<%=rush.id%>'><%=rush.name%></a></p>
+<% end %>
