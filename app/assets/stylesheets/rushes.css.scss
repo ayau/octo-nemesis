@@ -109,7 +109,7 @@
             }
             .bar-success { background: #62c462;}
         }
-        .friendswith, .attended{
+        .friendswith, .brothercontact{
             margin-left: 20px;
             margin-top: 10px;
             overflow:auto;
@@ -131,17 +131,18 @@
                 }
             }
         }
-        .friend_form{
+        .friend_form, .contact_form{
             display: none;
+            margin-left: 0px;
         }
         .token-input-list-facebook{
             width: 380px;
         }
-        .friend-btn{
+        .friend-btn, .contact-btn{
             position:relative;
             float: right;
         }
-        .friend-cancel-btn{
+        .friend-cancel-btn, .contact-cancel-btn{
             margin: 5px 10px;
         }
         .edit_info_button {

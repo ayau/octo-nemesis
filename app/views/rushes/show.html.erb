@@ -94,6 +94,24 @@
                 <% end %>
             </article> 
         </div>
+        <div class='brothercontact'>
+            <h3>Brother contact</h3>
+            <article class='contact_show'>
+                <ul>
+                    <% for c in @users %>
+                        <li><a href='/users/<%= c.id%>'><%= c.name %></a></li>
+                    <% end %>
+                </ul>
+                <input type='button' class='btn btn-info contact-btn' value='edit'/>
+            </article>
+            <article class='contact_form'>
+                <%= form_for @rush, :namespace => 'contact', :url => edit_contact_rush_path(@rush), :html => { :method => :post} do |f| %>  
+                    <%= f.text_field :contacts, "data-pre" => @users.map(&:attributes).to_json %>   
+                    <input type='button' class='btn contact-cancel-btn' value='cancel'/>
+                    <%= f.submit 'submit', :class => 'btn btn-success' %>  
+                <% end %>
+            </article> 
+        </div>
         <!-- <div class='attended'>
             <h3>Attended</h3>
             <ul>
