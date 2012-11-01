@@ -6,8 +6,7 @@ class ApplicationController < ActionController::Base
 
     def authenticate
       if(current_user.nil?) 
-        # && request.env['PATH_INFO'] != donthackmebro_path
-    	 if(request.env['PATH_INFO'] != loggedout_path && request.env['PATH_INFO'].index('/auth/facebook') != 0 )
+    	 if(request.env['PATH_INFO'] != loggedout_path && request.env['PATH_INFO'].index('/auth/facebook') != 0 && request.env['PATH_INFO'] != donthackmebro_path)
           if(request.env['PATH_INFO'] == root_path)
              redirect_to(loggedout_path)
           else
