@@ -1,4 +1,5 @@
 This is a rush application developed by Brandon Krieger and Alex Yau for Sigma Nu at UPenn.
+The full site can be found at www.rushsnakes.com. Only members of Penn Sigma Nu are able to login. For more information, please contact Brandon Krieger or Alex Yau.
 
 The master branch contains the current live site.
 The develop branch contains a site that should be working, but has not been fully tested or still has features being added.
