@@ -29,7 +29,8 @@ List of events
 Printing labels?
     export to excel with macro and shit
 Better way of cutting people
-    Should also improve the rush page, in which you can just press left and right arrow to go through rushes one by one (like imgur)
+    Should also improve the rush page
+    - in which you can just press left and right arrow to go through rushes one by one (like imgur)
 
 
 Alex
