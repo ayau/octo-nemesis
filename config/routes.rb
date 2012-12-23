@@ -1,9 +1,5 @@
 RushApp::Application.routes.draw do
 
-    resources :events
-
-    resources :tags
-
     resources :sessions, only: [:new, :create, :destroy]
 
     root to: 'pages#home'
@@ -11,6 +7,8 @@ RushApp::Application.routes.draw do
     match '/loggedout' => "pages#loggedout"
 
     match '/donthackmebro' => "sessions#hack"
+
+    match '/openrush' => 'openrushes#new'
 
     get "tags/new"
 
@@ -50,6 +48,13 @@ RushApp::Application.routes.draw do
             post 'edit'
         end
     end
+
+    resources :openrushes
+
+    resources :events
+
+    resources :tags
+
 
     match "/auth/:provider/callback" => "sessions#create"
     match "/signout" => "sessions#destroy", :as => :signout

@@ -1,0 +1,47 @@
+<%= form_for(@openrush) do |f| %>
+    <% if @openrush.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@openrush.errors.count, "error") %> prohibited this openrush from being saved:</h2>
+
+            <ul>
+            <% @openrush.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <ul>
+        <li>
+            <%= f.label :name %>
+            <%= f.text_field :name, :placeholder => 'Name' %>
+        </li>
+        <li>
+            <%= f.label :email %>
+            <%= f.text_field :email, :placeholder => 'Non-school Email' %>
+        </li>
+        <li>
+            <%= f.label :phone %>
+            <%= f.text_field :phone, :placeholder => 'phone number' %>
+        </li>
+        <li>
+            <%= f.label :residence %>
+            <%= f.text_field :residence, :placeholder => 'On campus address' %>
+        </li>
+        <li>
+            <%= f.label :year %>
+            <%= select_tag(:year, options_for_select(['Freshman', 'Sophmore', 'Junior'])) %>
+        </li>
+        <br />
+        <li>
+            <%= f.submit 'Submit', :class => 'btn btn-large btn-success' %>
+        </li>
+    </ul>
+
+    <div class="field">
+        <%= f.label :photo %>
+        <div id='photobooth'></div>
+        <%= f.hidden_field :photo %>
+    </div>
+    
+<% end %>

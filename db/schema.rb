@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121029231018) do
+ActiveRecord::Schema.define(:version => 20121223095930) do
 
   create_table "attendees", :force => true do |t|
     t.integer  "event_id"
@@ -55,6 +55,17 @@ ActiveRecord::Schema.define(:version => 20121029231018) do
   create_table "friendships", :force => true do |t|
     t.integer "rush_id"
     t.integer "friend_id"
+  end
+
+  create_table "openrushes", :force => true do |t|
+    t.string   "name"
+    t.string   "photo"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "residence"
+    t.string   "year"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "rush_comments", :force => true do |t|

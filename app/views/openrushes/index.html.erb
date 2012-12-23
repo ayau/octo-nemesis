@@ -1,0 +1,33 @@
+<h1>Listing openrushes</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Photo</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Residence</th>
+    <th>Class</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @openrushes.each do |openrush| %>
+  <tr>
+    <td><%= openrush.name %></td>
+    <td><%= openrush.photo %></td>
+    <td><%= openrush.email %></td>
+    <td><%= openrush.phone %></td>
+    <td><%= openrush.residence %></td>
+    <td><%= openrush.class %></td>
+    <td><%= link_to 'Show', openrush %></td>
+    <td><%= link_to 'Edit', edit_openrush_path(openrush) %></td>
+    <td><%= link_to 'Destroy', openrush, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Openrush', new_openrush_path %>
