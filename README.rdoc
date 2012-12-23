@@ -4,3 +4,33 @@ The full site can be found at www.rushsnakes.com. Only members of Penn Sigma Nu 
 The master branch contains the current live site.
 The develop branch contains a site that should be working, but has not been fully tested or still has features being added.
 All other branches contain new features.
+
+
+TODO:
+Rush page
+    Webcam stuff
+    AWS for storing images (or dropbox)
+    Form (need to double check with Zack)
+    Separate database to store that
+Connecting with existing rushes
+    Database relation
+    Rollback feature
+    Feature selection (ie. connect by name? what if duplicate?)
+Admin power for Zack and Mike (to cut)
+    any other stuff only they can do?
+Table of rushes
+    Fix the sorting
+    Grey out the ones who we cut at different stages?
+    Refine the search bar (ie. only search for people still in
+List of events
+    We already have events database
+    Need to think of innovative way for brothers to say a rush has attended an event
+    Rush chairs can make events
+Printing labels?
+    export to excel with macro and shit
+Better way of cutting people
+    Should also improve the rush page, in which you can just press left and right arrow to go through rushes one by one (like imgur)
+
+
+Alex
+rush table + data, events and the rush viewing thing
