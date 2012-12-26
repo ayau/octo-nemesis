@@ -24,12 +24,12 @@ class OpenrushesController < ApplicationController
     # GET /openrushes/new
     # GET /openrushes/new.json
     def new
-        @openrush = Openrush.new
+        @openrush = Openrush.new        
 
-        respond_to do |format|
-            format.html # new.html.erb
-            format.json { render json: @openrush }
-        end
+        # respond_to do |format|
+        #     format.html # new.html.erb
+        #     format.json { render json: @openrush }
+        # end
     end
 
     # GET /openrushes/1/edit
@@ -42,15 +42,45 @@ class OpenrushesController < ApplicationController
     def create
         @openrush = Openrush.new(params[:openrush])
 
-        respond_to do |format|
-            if @openrush.save
-                format.html { redirect_to @openrush, notice: 'Openrush was successfully created.' }
-                format.json { render json: @openrush, status: :created, location: @openrush }
-            else
-                format.html { render action: "new" }
-                format.json { render json: @openrush.errors, status: :unprocessable_entity }
-            end
+        @openrush.phone = @openrush.phone.gsub(/[^0-9]/i, '')
+        @rush = Rush.find_by_phone(@openrush.phone)
+        if @rush
+        else
+            @rush = Rush.find_by_name(@openrush.name)
         end
+        if @rush
+        else
+            @rush = Rush.new
+            @rush.name = @openrush.name
+            @rush.phone = @openrush.phone
+            @rush.save
+        end
+        @openrush.rush_id = @rush.id
+        @old_openrush = Openrush.find_by_rush_id(@openrush.rush_id)
+        if @old_openrush
+            @old_openrush.update_attribute(:rush_id, nil)
+        end
+
+        photo = Photo.new
+        photo.photo_url = @openrush.photo
+        photo.rush_id = @openrush.rush_id
+        photo.save
+
+        @openrush.save
+
+        redirect_to root_url + "snrush"
+
+
+
+        # respond_to do |format|
+        #     if @openrush.save
+        #         format.html { redirect_to @openrush, notice: 'Openrush was successfully created.' }
+        #         format.json { render json: @openrush, status: :created, location: @openrush }
+        #     else
+        #         format.html { render action: "new" }
+        #         format.json { render json: @openrush.errors, status: :unprocessable_entity }
+        #     end
+        # end
     end
 
     # PUT /openrushes/1
@@ -73,7 +103,10 @@ class OpenrushesController < ApplicationController
     # DELETE /openrushes/1.json
     def destroy
         @openrush = Openrush.find(params[:id])
-        @openrush.destroy
+
+        if is_admin?
+            @openrush.destroy
+        end
 
         respond_to do |format|
             format.html { redirect_to openrushes_url }

@@ -8,7 +8,7 @@ RushApp::Application.routes.draw do
 
     match '/donthackmebro' => "sessions#hack"
 
-    match '/openrush' => 'openrushes#new'
+    match '/snrush' => 'openrushes#new'
 
     get "tags/new"
 

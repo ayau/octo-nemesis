@@ -14,7 +14,7 @@ class RushesController < ApplicationController
             elsif Rush.find_by_name(@rush.name)
                 redirect_to Rush.find_by_name(@rush.name)
             else
-                render 'new'
+                render :new
             end
     end
 
@@ -26,6 +26,15 @@ class RushesController < ApplicationController
 
     def show
         @rush = Rush.find(params[:id])
+        @openrush = @rush.openrush
+
+        if(@openrush)
+            @rush.email = @openrush.email
+            @rush.phone = @openrush.phone
+            @rush.name = @rush.name + "(" + @openrush.name + ")"
+            @rush.residence = @openrush.residence
+        end
+
         @average_pull = get_average_pull(@rush.cpratings)
         @average_chill = get_average_chill(@rush.cpratings)
         @cprating = Cprating.new
@@ -39,10 +48,11 @@ class RushesController < ApplicationController
     end
 
     def index
-        @rushes = Rush.find_by_sql "select * from rushes as r 
-                                    left join (select rush_id, COALESCE(avg(chill),0.0) as avg_chill from cpratings group by rush_id) as c 
-                                        on c.rush_id = r.id 
-                                        order by c.avg_chill DESC"
+        # @rushes = Rush.find_by_sql "select * from rushes as r 
+        #                             left join (select rush_id, COALESCE(avg(chill),0.0) as avg_chill from cpratings group by rush_id) as c 
+        #                                 on c.rush_id = r.id 
+        #                                 order by c.avg_chill DESC"
+        @rushes = Rush.find(:all, :order => 'name')
         @RushesController = self
     end
 
