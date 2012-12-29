@@ -25,7 +25,9 @@
 
     <article class='photo_container'>
         <div class='background'></div>
-        <% if !@rush.photo.blank? %>
+        <% if @rush.photos && @rush.photos[0] %>
+            <% photo_url = @rush.photos[0].photo_url %>
+        <% elsif !@rush.photo.blank? %>
             <% photo_url = @rush.photo %>
         <% else %>
             <% photo_url = "http://www.bizsitesolutions.com/images/team/placeholder2.jpg" %>
