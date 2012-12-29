@@ -19,6 +19,7 @@
         <% found_photo = getPictureForName(current_user.token,@rush.name) %>
         <% if !found_photo.blank? %>
             <% @rush.update_attribute(:photo, found_photo) %>
+            <% add_new_photo found_photo @rush.id %>
         <% end %>
     <% end %>
 

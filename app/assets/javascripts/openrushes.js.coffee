@@ -6,6 +6,4 @@ $ ->
     $('#openrush_photo').val('lol')
         
     $('#photobooth').photobooth().on "image", (event, url) ->
-        console.log url
-        # $( "#gallery" ).append( '<img src="' + dataUrl + '" >');
-    # });
+        $("#openrush_photo").val(url)

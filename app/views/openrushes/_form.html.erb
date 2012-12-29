@@ -13,24 +13,20 @@
 
     <ul>
         <li>
-            <%= f.label :name %>
-            <%= f.text_field :name, :placeholder => 'Name' %>
+            <%= f.text_field :name, :placeholder => "Name" %>
         </li>
         <li>
-            <%= f.label :email %>
-            <%= f.text_field :email, :placeholder => 'Non-school Email' %>
+            <%= f.text_field :email, :placeholder => 'Non-Penn Email' %>
         </li>
         <li>
-            <%= f.label :phone %>
-            <%= f.text_field :phone, :placeholder => 'phone number' %>
+            <%= f.text_field :phone, :placeholder => 'Phone Number' %>
         </li>
         <li>
-            <%= f.label :residence %>
-            <%= f.text_field :residence, :placeholder => 'On campus address' %>
+            <%= f.text_field :residence, :placeholder => 'Address (i.e. Ware Butcher 100)' %>
         </li>
         <li>
-            <%= f.label :year %>
-            <%= select_tag(:year, options_for_select(['Freshman', 'Sophmore', 'Junior'])) %>
+            <!-- <%= select_tag(:year, options_for_select(['Freshman', 'Sophmore', 'Junior'])) %> -->
+            <%= f.text_field :year, :placeholder => "Year at Penn (i.e. Freshman)" %>
         </li>
         <br />
         <li>
@@ -39,7 +35,6 @@
     </ul>
 
     <div class="field">
-        <%= f.label :photo %>
         <div id='photobooth'></div>
         <%= f.hidden_field :photo %>
     </div>

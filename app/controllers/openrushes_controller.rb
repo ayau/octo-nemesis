@@ -42,6 +42,8 @@ class OpenrushesController < ApplicationController
     def create
         @openrush = Openrush.new(params[:openrush])
 
+        @openrush.photo = ''
+
         @openrush.phone = @openrush.phone.gsub(/[^0-9]/i, '')
         @rush = Rush.find_by_phone(@openrush.phone)
         if @rush
@@ -61,10 +63,12 @@ class OpenrushesController < ApplicationController
             @old_openrush.update_attribute(:rush_id, nil)
         end
 
-        photo = Photo.new
-        photo.photo_url = @openrush.photo
-        photo.rush_id = @openrush.rush_id
-        photo.save
+        if params[:openrush][:photo]
+            photo = Photo.new
+            photo.photo_url = params[:openrush][:photo]
+            photo.rush_id = @openrush.rush_id
+            photo.save
+        end
 
         @openrush.save
 

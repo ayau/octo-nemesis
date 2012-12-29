@@ -10,6 +10,12 @@ class RushesController < ApplicationController
         @rush = Rush.new(params[:rush])
         @rush.phone = @rush.phone.gsub(/[^0-9]/i, '')
             if @rush.save
+                if @rush.photo
+                    photo = Photo.new
+                    photo.photo_url = @rush.photo
+                    photo.rush_id = @rush.id
+                    photo.save
+                end
                 redirect_to @rush
             elsif Rush.find_by_name(@rush.name)
                 redirect_to Rush.find_by_name(@rush.name)
@@ -20,6 +26,12 @@ class RushesController < ApplicationController
 
     def edit
         @rush = Rush.find(params[:id])
+        if !(params[:rush][:photo] == @rush.photo)
+            photo = Photo.new
+            photo.photo_url = params[:rush][:photo]
+            photo.rush_id = @rush.id
+            photo.save
+        end
         @rush.update_attributes(params[:rush])
         redirect_to Rush.find(@rush.id)  
     end
@@ -31,7 +43,9 @@ class RushesController < ApplicationController
         if(@openrush)
             @rush.email = @openrush.email
             @rush.phone = @openrush.phone
-            @rush.name = @rush.name + "(" + @openrush.name + ")"
+            if(!(@rush.name == @openrush.name))
+                @rush.name = @rush.name + "(" + @openrush.name + ")"
+            end
             @rush.residence = @openrush.residence
         end
 
