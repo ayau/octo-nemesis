@@ -44,7 +44,7 @@ class RushesController < ApplicationController
             @rush.email = @openrush.email
             @rush.phone = @openrush.phone
             if(!(@rush.name == @openrush.name))
-                @rush.name = @rush.name + "(" + @openrush.name + ")"
+                $displayName = @rush.name + " (" + @openrush.name + ")"
             end
             @rush.residence = @openrush.residence
         end

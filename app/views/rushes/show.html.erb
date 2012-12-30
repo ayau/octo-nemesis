@@ -3,7 +3,7 @@
     <%= stylesheet_link_tag "application", "token-input-facebook" %>  
     <%= javascript_include_tag :defaults, "jquery.tokeninput" %> 
     <header> 
-        <h1><%= @rush.name %></h1>
+        <h1><%= $displayName %></h1>
         <% if is_admin? %>
             <%= form_for @rush, :namespace => 'cut', :url => cut_rush_path(@rush), :html => { :method => :post} do |r| %>  
                 <% if @rush.active == 1 %>
