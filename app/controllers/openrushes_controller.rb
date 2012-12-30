@@ -64,7 +64,7 @@ class OpenrushesController < ApplicationController
         end
 
         if params[:openrush][:photo]
-            if !(@rush.has_data_photo)
+            if (@rush.has_data_photo == 0)
                 photo = Photo.new
                 photo.photo_url = params[:openrush][:photo]
                 photo.rush_id = @openrush.rush_id
