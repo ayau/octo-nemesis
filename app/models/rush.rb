@@ -16,7 +16,7 @@
 #
 
 class Rush < ActiveRecord::Base
-    attr_accessible :email, :name, :origin, :phone, :photo, :residence, :friend_tokens, :contacts
+    attr_accessible :email, :name, :origin, :phone, :photo, :residence, :friend_tokens, :contacts, :has_data_photo
 
     has_many :rush_comments, dependent: :destroy
     has_many :cpratings

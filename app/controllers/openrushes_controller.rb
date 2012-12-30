@@ -64,10 +64,13 @@ class OpenrushesController < ApplicationController
         end
 
         if params[:openrush][:photo]
-            photo = Photo.new
-            photo.photo_url = params[:openrush][:photo]
-            photo.rush_id = @openrush.rush_id
-            photo.save
+            if !(@rush.has_data_photo)
+                photo = Photo.new
+                photo.photo_url = params[:openrush][:photo]
+                photo.rush_id = @openrush.rush_id
+                photo.save
+                @rush.update_attribute(:has_data_photo, 1)
+            end
         end
 
         @openrush.save
