@@ -7,9 +7,9 @@
         <% if is_admin? %>
             <%= form_for @rush, :namespace => 'cut', :url => cut_rush_path(@rush), :html => { :method => :post} do |r| %>  
                 <% if @rush.active == 1 %>
-                    <%= r.submit 'Cut', :confirm => 'FUCK THAT KID?', :class => 'btn btn-danger' %> 
+                    <%= r.submit 'Cut', :confirm => 'FUCK THAT KID?', :class => 'btn btn-danger cut' %> 
                 <% else %>
-                    <%= r.submit 'Uncut', :class => 'btn btn-success' %>
+                    <%= r.submit 'Uncut', :class => 'btn btn-success uncut' %>
                 <% end %>
             <% end %>
         <% end %>

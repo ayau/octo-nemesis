@@ -60,8 +60,8 @@ class RushesController < ApplicationController
         @users = @rush.users
         @rank = get_rank(@average_chill, @average_pull)
 
-        @prev_rush = Rush.find(:all, :order => "name", :conditions => ['name < ?', @rush.name]).last
-        @next_rush = Rush.find(:all, :order => "name", :conditions => ['name > ?', @rush.name]).first
+        @prev_rush = Rush.find(:all, :order => "name", :conditions => ['name < ? AND active == 1', @rush.name]).last
+        @next_rush = Rush.find(:all, :order => "name", :conditions => ['name > ? AND active == 1', @rush.name]).first
 
         @events = @rush.events
 
@@ -104,7 +104,7 @@ class RushesController < ApplicationController
         @rush = Rush.find(params[:id])
         if @rush.active == 1
             @rush.update_attribute(:active, 0)
-            redirect_to '/rushes'
+            redirect_to @rush
         else
             @rush.update_attribute(:active, 1)
             redirect_to @rush

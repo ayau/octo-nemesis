@@ -180,11 +180,16 @@ $ ->
         if !$('textarea').is(":focus") && !$('input').is(":focus")
             if e.keyCode is 39
                 # right
-                $('.next_rush')[0].click()
-                console.log 'right'
+                if $('.next_rush').length is 0
+                    alert 'this is the last rush'
+                else
+                    $('.next_rush')[0].click()
             else if e.keyCode is 37
                 # left 
-                $('.prev_rush')[0].click()
-                console.log 'left'
-
+                console.log $('.prev_rush').length
+                if $('.prev_rush').length is 0
+                    alert 'this is the first rush'
+                else
+                    $('.prev_rush')[0].click()
+                
 
