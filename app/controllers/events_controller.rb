@@ -75,4 +75,19 @@ class EventsController < ApplicationController
             format.json { head :no_content }
         end
     end
+
+    def search
+        search = params[:search]
+        
+        if search
+            results = Event.find(:all, :select => 'id, name', :conditions => ['name LIKE ?', "%#{search}%"])
+        else
+            results = []
+        end
+
+        respond_to do |format|
+            format.json { render json: results }
+        end
+
+    end
 end

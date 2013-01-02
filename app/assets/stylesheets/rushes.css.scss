@@ -322,3 +322,41 @@
         margin-left: 300px;
     }
 }
+
+.search {
+    ul {
+        display: none;
+        list-style: none;
+        background: white;
+        border: 1px solid #CCC;
+        width: 220px;
+        margin: 0px;
+        padding: 0px;
+        margin-top: -10px;
+        box-shadow: 1px 1px 8px 0px rgba(0,0,0,0.5);
+        overflow: hidden;
+    }
+    li {
+        padding: 10px;
+        &:hover {
+            background: #EAEAEA;
+        }
+    }
+    a {
+        cursor: pointer;
+        width: 220px;
+        display: block;
+    }
+}
+
+.events {
+    clear:both; 
+    padding-top: 10px;
+    ul {
+        list-style: none;
+    }
+    .event-items {
+        float: left;
+        padding: 0px 5px;
+    }
+}

@@ -14,7 +14,7 @@
             <% end %>
         <% end %>
         <h1 class='rank'>#<%= @rank %></h1>
-    </header>
+    </header> 
     <% if @rush.photo.blank? %>
         <% found_photo = getPictureForName(current_user.token,@rush.name) %>
         <% if !found_photo.blank? %>
@@ -126,6 +126,34 @@
             </ul>
         </div> -->
     </article>
+    
+
+    <article class='events'>
+        <h4>Events attended</h4>
+        <% if @events.length > 0 %>
+            <ul>
+                <% @events.each do |event| %>
+                    <li class='event-items'><%= event.name %></li>
+                <% end %>
+            </ul>
+        <% else %>
+            <p style='color: #999;'>No events attended</p>
+        <% end %>
+
+        <div style='clear:both; padding-top: 10px;' class='search'>
+            <%= text_field_tag :search, params[:search], :class => 'search_events', :placeholder => "name of event" %>
+            
+            <ul id='search_results'></ul>
+            
+            <%= form_tag attend_rush_path(@rush), :method => :put, :class => 'event_form' do %>
+                <%= hidden_field_tag :event_id %>
+            <% end %>
+
+        </div>
+
+    </article>
+
+
     <article class='comments'>
         <%= form_for @rush_comment do |f| %>
             <%= f.text_area :text, :placeholder => "Say something about " + @rush.name.split[0] %>
@@ -210,3 +238,5 @@
 <% if @next_rush %>
     <%= link_to @next_rush.name, @next_rush, :class => 'next_rush', :style => 'display:none' %>
 <% end %>
+
+<%= javascript_include_tag 'search' %>

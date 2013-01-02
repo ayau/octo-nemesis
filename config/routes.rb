@@ -33,6 +33,7 @@ RushApp::Application.routes.draw do
             post 'edit_contact'
             post 'edit'
             post 'cut'
+            put 'attend'
         end
     end
 
@@ -51,7 +52,11 @@ RushApp::Application.routes.draw do
 
     resources :openrushes
 
-    resources :events
+    resources :events do
+        collection do
+            get 'search'
+        end
+    end
 
     resources :tags
 

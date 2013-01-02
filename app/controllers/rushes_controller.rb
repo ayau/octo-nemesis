@@ -63,6 +63,8 @@ class RushesController < ApplicationController
         @prev_rush = Rush.find(:all, :order => "name", :conditions => ['name < ?', @rush.name]).last
         @next_rush = Rush.find(:all, :order => "name", :conditions => ['name > ?', @rush.name]).first
 
+        @events = @rush.events
+
     end
 
     def index
@@ -108,6 +110,14 @@ class RushesController < ApplicationController
             redirect_to @rush
         end
         
+    end
+
+    def attend
+        rush = Rush.find(params[:id])
+
+        Attendee.find_or_create_by_event_id_and_rush_id(params[:event_id], rush.id)
+
+        redirect_to :back
     end
 
 
