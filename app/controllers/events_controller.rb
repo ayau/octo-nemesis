@@ -10,6 +10,7 @@ class EventsController < ApplicationController
     end
 
     def new
+        return redirect_to('/401.html') unless is_admin?
         @event = Event.new
     end
 
