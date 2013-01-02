@@ -1,4 +1,4 @@
-<%= form_for(@openrush) do |f| %>
+<%= form_for@openrush, :remote => true do |f| %>
     <% if @openrush.errors.any? %>
         <div id="error_explanation">
             <h2><%= pluralize(@openrush.errors.count, "error") %> prohibited this openrush from being saved:</h2>
@@ -30,13 +30,28 @@
         </li>
         <br />
         <li>
-            <%= f.submit 'Submit', :class => 'btn btn-large btn-success' %>
+            <input class='photo-button' type='button' value='Take a photo'/>
+            <span class='photo-taken'>Photo taken</span>
+            <br />
+            <br />
+            <%= button_tag 'Submit', :type => 'button', :class => 'btn btn-large btn-success fake-submit' %>
         </li>
     </ul>
 
-    <div class="field">
+    <div class='countdown'></div>
+    <img class='demo-photo' src= '' />
+    <div class='photo-wrapper' >
         <div id='photobooth'></div>
         <%= f.hidden_field :photo %>
+    </div>
+
+    <div class='thankyou'>
+        <center style='margin-top: 100px;'>
+            <p>Thanks for signing in.</p>
+            <p>Enjoy the night!</p>
+            <br /><br />
+            <%= button_tag 'Sign in', :class => 'btn btn-large btn-success next_signin' %>
+        </center>
     </div>
     
 <% end %>

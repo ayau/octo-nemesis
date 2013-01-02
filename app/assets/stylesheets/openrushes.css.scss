@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "default";
 
 #photobooth {
     height: 400px;
@@ -12,10 +13,60 @@
 }
 
 .new_openrush {
+    position: relative;
     ul {
         float: left;
         list-style: none;
         margin-right: 40px;
         margin-top: 20px;
+    }
+}
+
+
+.countdown {
+    position: absolute;
+    left: 580px;
+    top: 230px;
+    font-size: 150px;
+    color: red;
+    z-index: 10;
+}
+
+.demo-photo {
+    position: absolute;
+    z-index: 9;
+    top: 20px;
+    left: 290px;
+}
+
+input[type=button]{
+    &:disabled {
+        border: 1px solid #CCC;
+        margin: 0px;
+    }
+}
+
+.photo-taken {
+    display: none;
+    color: #FF0000; 
+    margin-left: 10px;
+}
+
+.thankyou {
+    display: none;
+    position: absolute;
+    width: 960px;
+    height: 500px;
+    z-index: 11;
+    background: $bgColor;
+    p {
+        font-size: 24px;
+        padding: 10px;
+    }
+}
+
+.photobooth {
+    ul {
+        display: none;
     }
 }
