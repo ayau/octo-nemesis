@@ -59,6 +59,10 @@ class RushesController < ApplicationController
         @events = @rush.events
         @users = @rush.users
         @rank = get_rank(@average_chill, @average_pull)
+
+        @prev_rush = Rush.find(:all, :order => "name", :conditions => ['name < ?', @rush.name]).last
+        @next_rush = Rush.find(:all, :order => "name", :conditions => ['name > ?', @rush.name]).first
+
     end
 
     def index

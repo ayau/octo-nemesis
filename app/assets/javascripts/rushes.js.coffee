@@ -174,3 +174,17 @@ $ ->
 
     init_new(location.search)
 
+
+    # Arrow key control
+    $('html').keydown (e) ->
+        if !$('textarea').is(":focus") && !$('input').is(":focus")
+            if e.keyCode is 39
+                # right
+                $('.next_rush')[0].click()
+                console.log 'right'
+            else if e.keyCode is 37
+                # left 
+                $('.prev_rush')[0].click()
+                console.log 'left'
+
+
