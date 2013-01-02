@@ -26,14 +26,37 @@
     <article class='photo_container'>
         <div class='background'></div>
         <% if @rush.photos && @rush.photos[0] %>
-            <% photo_url = @rush.photos[0].photo_url %>
+            <div id='profile_picture_1' class='photo' style='display: block;background-image: url(<%= @rush.photos[0].photo_url %>) '></div>
+            <% for i in 2..@rush.photos.count %>
+                <div id='profile_picture_<%= i %>' class='photo' style='display: none;background-image: url(<%= @rush.photos[i-1].photo_url %>) '></div>
+            <% end %>
+            <% has_old = false %>
+            <% if !@rush.photo.blank? %>
+                <div id='profile_picture_old' class='photo' style='display: none;background-image: url(<%= @rush.photo %>) '></div>
+                <% has_old = true %>
+            <% end %>
         <% elsif !@rush.photo.blank? %>
-            <% photo_url = @rush.photo %>
+            <div id='profile_picture' class='photo' style='background-image: url(<%= @rush.photo %>) '></div>
         <% else %>
             <% photo_url = "http://www.bizsitesolutions.com/images/team/placeholder2.jpg" %>
+            <div id='profile_picture' class='photo' style='background-image: url(<%= photo_url %>) '></div>
         <% end %>
-        <div class='photo' style='background-image: url(<%= photo_url %>) '></div>
     </article>
+
+    <article>
+        <% if @rush.photos && @rush.photos[0] %>
+            <% num_photos = @rush.photos.count %>
+            <% if has_old %>
+                <% num_photos = num_photos + 1 %>
+            <% end %>
+            <select id="photo_dropdown" onchange="changePhoto('<%= @rush.photos.count %>','<%= has_old %>')">
+            <% for i in 1..num_photos %>
+                <option><%= i %></option>
+            <% end %>
+            </select>
+        <% end %>
+    </article>
+
     <article class='info'>
         <dl class="dl-horizontal">
             <article class='show'>
@@ -126,7 +149,7 @@
             </ul>
         </div> -->
     </article>
-    
+
 
     <article class='events'>
         <h4>Events attended</h4>
