@@ -60,8 +60,8 @@ class RushesController < ApplicationController
         @users = @rush.users
         @rank = get_rank(@average_chill, @average_pull)
 
-        @prev_rush = Rush.find(:all, :order => "name", :conditions => ['name < ? AND active == 1', @rush.name]).last
-        @next_rush = Rush.find(:all, :order => "name", :conditions => ['name > ? AND active == 1', @rush.name]).first
+        @prev_rush = Rush.find(:all, :order => "name", :conditions => ['name < ? AND active = 1', @rush.name]).last
+        @next_rush = Rush.find(:all, :order => "name", :conditions => ['name > ? AND active = 1', @rush.name]).first
 
         @events = @rush.events
 
@@ -121,7 +121,7 @@ class RushesController < ApplicationController
     end
 
     def labels
-        @rushes = Rush.find(:all, :order => "name", :conditions => ['active == 1'])
+        @rushes = Rush.find(:all, :order => "name", :conditions => ['active = 1'])
     end
 
 
