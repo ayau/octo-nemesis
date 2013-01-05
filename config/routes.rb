@@ -27,6 +27,9 @@ RushApp::Application.routes.draw do
     end
 
     resources :rushes do
+        collection do
+            get 'labels'
+        end
         member do
             get 'show'
             post 'edit_friend'

@@ -120,6 +120,10 @@ class RushesController < ApplicationController
         redirect_to :back
     end
 
+    def labels
+        @rushes = Rush.find(:all, :order => "name", :conditions => ['active == 1'])
+    end
+
 
 
 end

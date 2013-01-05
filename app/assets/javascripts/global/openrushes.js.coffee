@@ -68,8 +68,13 @@ $ ->
     makeError = (field, value) ->
         if value.length is 0
             return field + ' is missing. '
-        else
-            return ''
+        else if field is 'email' && value.indexOf('.edu') isnt -1
+            return field + ' cannot be a University email. '
+        else if field is 'phone'
+            phone = value.match(/\d+/g)
+            if !phone || phone.join('').length < 10
+                return 'Please enter a valid phone number. ' 
+        return ''
 
 
     clearForm = () ->

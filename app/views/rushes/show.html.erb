@@ -49,11 +49,6 @@
             <% if has_old %>
                 <% num_photos = num_photos + 1 %>
             <% end %>
-            <select id="photo_dropdown" onchange="changePhoto('<%= @rush.photos.count %>','<%= has_old %>')">
-            <% for i in 1..num_photos %>
-                <option><%= i %></option>
-            <% end %>
-            </select>
         <% end %>
     </article>
 
@@ -149,7 +144,16 @@
             </ul>
         </div> -->
     </article>
-
+    <div style='clear:both'></div>
+    <% if @rush.photos && @rush.photos[0] %>
+            
+        <p style='float: left; margin-right: 10px;'>Choose a photo</p>
+        <select id="photo_dropdown" onchange="changePhoto('<%= @rush.photos.count %>','<%= has_old %>')">
+            <% for i in 1..num_photos %>
+                <option><%= i %></option>
+            <% end %>
+        </select>
+    <% end %>
 
     <article class='events'>
         <h4>Events attended</h4>
