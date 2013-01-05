@@ -53,7 +53,11 @@ RushApp::Application.routes.draw do
         end
     end
 
-    resources :openrushes
+    resources :openrushes do
+        member do
+            get 'disconnect'
+        end
+    end
 
     resources :events do
         collection do

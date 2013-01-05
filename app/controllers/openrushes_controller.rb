@@ -120,4 +120,17 @@ class OpenrushesController < ApplicationController
             format.json { head :no_content }
         end
     end
+
+    def disconnect
+        @openrush = Openrush.find(params[:id])
+        if is_admin?
+            @rush = Rush.new
+            @rush.name = @openrush.name
+            @rush.phone = @openrush.phone
+            @rush.save
+            @openrush.update_attribute(:rush_id, @rush.id)
+
+        end
+        redirect_to openrushes_url
+    end
 end
