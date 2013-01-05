@@ -64,6 +64,10 @@
         background-size: 100% auto;
         background-position:center;
     }
+    #photo_dropdown{
+        width: 50px;
+        display:block;
+    }
 
     .info{
         float:left;
@@ -167,7 +171,7 @@
     .comments{
         overflow:auto;
         width:100%;
-        padding-top: 30px;
+        padding-top: 0px;
         textarea{
             font-size: 16px;
             width: 500px;
@@ -320,5 +324,42 @@
     .btn{
         margin-top: -30px;
         margin-left: 300px;
+    }
+}
+
+.search {
+    ul {
+        display: none;
+        list-style: none;
+        background: white;
+        border: 1px solid #CCC;
+        width: 220px;
+        margin: 0px;
+        padding: 0px;
+        margin-top: -10px;
+        box-shadow: 1px 1px 8px 0px rgba(0,0,0,0.5);
+        overflow: hidden;
+    }
+    li {
+        padding: 10px;
+        &:hover {
+            background: #EAEAEA;
+        }
+    }
+    a {
+        cursor: pointer;
+        width: 220px;
+        display: block;
+    }
+}
+
+.events {
+    clear:both; 
+    ul {
+        list-style: none;
+    }
+    .event-items {
+        float: left;
+        padding: 0px 5px;
     }
 }

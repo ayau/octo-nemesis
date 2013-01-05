@@ -45,4 +45,13 @@ module RushesHelper
             return 0.0
         end
     end
+
+    def add_new_photo(photo_url,rush_id)
+        if photo_url
+            photo = Photo.new
+            photo.photo_url = photo_url
+            photo.rush_id = rush_id
+            photo.save
+        end
+    end
 end

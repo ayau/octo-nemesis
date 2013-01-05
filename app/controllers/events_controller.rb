@@ -10,6 +10,7 @@ class EventsController < ApplicationController
     end
 
     def new
+        return redirect_to('/401.html') unless is_admin?
         @event = Event.new
     end
 
@@ -74,5 +75,20 @@ class EventsController < ApplicationController
             format.html { redirect_to events_url }
             format.json { head :no_content }
         end
+    end
+
+    def search
+        search = params[:search]
+        
+        if search
+            results = Event.find(:all, :select => 'id, name', :conditions => ['name LIKE ?', "%#{search}%"])
+        else
+            results = []
+        end
+
+        respond_to do |format|
+            format.json { render json: results }
+        end
+
     end
 end

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @openrush.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @openrush.email %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @openrush.phone %>
+</p>
+
+<p>
+  <b>Residence:</b>
+  <%= @openrush.residence %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @openrush.year %>
+</p>
+
+
+<%= link_to 'Edit', edit_openrush_path(@openrush) %> |
+<%= link_to 'Back', openrushes_path %>

@@ -16,7 +16,7 @@
 #
 
 class Rush < ActiveRecord::Base
-    attr_accessible :email, :name, :origin, :phone, :photo, :residence, :friend_tokens, :contacts
+    attr_accessible :email, :name, :origin, :phone, :photo, :residence, :friend_tokens, :contacts, :has_data_photo, :active
 
     has_many :rush_comments, dependent: :destroy
     has_many :cpratings
@@ -33,10 +33,14 @@ class Rush < ActiveRecord::Base
                           :foreign_key => "rush_id",
                           :association_foreign_key => "friend_id"
 
+    has_many :photos, dependent: :destroy
+    has_one :openrush
+
 
 
     validates :name, presence: true
     validates_uniqueness_of :name
+    validates_uniqueness_of :phone, :allow_nil => true, :allow_blank => true
     #For now I got rid of phone validation in case we have no phone number
     #validates :phone, presence: true
     #validates_uniqueness_of :phone

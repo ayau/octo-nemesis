@@ -174,3 +174,23 @@ $ ->
 
     init_new(location.search)
 
+
+    # Arrow key control
+    $('html').keydown (e) ->
+        if !$('textarea').is(":focus") && !$('input').is(":focus") && $('.rush').length > 0
+            if e.keyCode is 39
+                # right
+                if $('.next_rush').length is 0
+                    alert 'this is the last rush'
+                else
+                    $('.next_rush')[0].click()
+            else if e.keyCode is 37
+                # left 
+                console.log $('.prev_rush').length
+                if $('.prev_rush').length is 0
+                    alert 'this is the first rush'
+                else
+                    $('.prev_rush')[0].click()
+                
+
+

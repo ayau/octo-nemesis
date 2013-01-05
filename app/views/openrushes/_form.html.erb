@@ -1,0 +1,57 @@
+<%= form_for@openrush, :remote => true do |f| %>
+    <% if @openrush.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@openrush.errors.count, "error") %> prohibited this openrush from being saved:</h2>
+
+            <ul>
+            <% @openrush.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <ul>
+        <li>
+            <%= f.text_field :name, :placeholder => "Name" %>
+        </li>
+        <li>
+            <%= f.text_field :email, :placeholder => 'Non-Penn Email' %>
+        </li>
+        <li>
+            <%= f.text_field :phone, :placeholder => 'Phone Number' %>
+        </li>
+        <li>
+            <%= f.text_field :residence, :placeholder => 'Address (i.e. Ware Butcher 100)' %>
+        </li>
+        <li>
+            <!-- <%= select_tag(:year, options_for_select(['Freshman', 'Sophmore', 'Junior'])) %> -->
+            <%= f.text_field :year, :placeholder => "Year at Penn (i.e. Freshman)" %>
+        </li>
+        <br />
+        <li>
+            <input class='photo-button' type='button' value='Take a photo'/>
+            <span class='photo-taken'>Photo taken</span>
+            <br />
+            <br />
+            <%= button_tag 'Submit', :type => 'button', :class => 'btn btn-large btn-success fake-submit' %>
+        </li>
+    </ul>
+
+    <div class='countdown'></div>
+    <img class='demo-photo' src= '' />
+    <div class='photo-wrapper' >
+        <div id='photobooth'></div>
+        <%= f.hidden_field :photo %>
+    </div>
+
+    <div class='thankyou'>
+        <center style='margin-top: 100px;'>
+            <p>Thanks for signing in.</p>
+            <p>Enjoy the night!</p>
+            <br /><br />
+            <%= button_tag 'Sign in', :class => 'btn btn-large btn-success next_signin' %>
+        </center>
+    </div>
+    
+<% end %>

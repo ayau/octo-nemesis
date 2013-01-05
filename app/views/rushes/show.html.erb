@@ -4,31 +4,54 @@
     <%= javascript_include_tag :defaults, "jquery.tokeninput" %> 
     <header> 
         <h1><%= @rush.name %></h1>
-        <%= form_for @rush, :namespace => 'cut', :url => cut_rush_path(@rush), :html => { :method => :post} do |r| %>  
-            <% if @rush.active == 1 %>
-                <%= r.submit 'Cut', :confirm => 'FUCK THAT KID?', :class => 'btn btn-danger' %> 
-            <% else %>
-                 <%= r.submit 'Uncut', :class => 'btn btn-success' %>
+        <% if is_admin? %>
+            <%= form_for @rush, :namespace => 'cut', :url => cut_rush_path(@rush), :html => { :method => :post} do |r| %>  
+                <% if @rush.active == 1 %>
+                    <%= r.submit 'Cut', :confirm => 'FUCK THAT KID?', :class => 'btn btn-danger cut' %> 
+                <% else %>
+                    <%= r.submit 'Uncut', :class => 'btn btn-success uncut' %>
+                <% end %>
             <% end %>
         <% end %>
         <h1 class='rank'>#<%= @rank %></h1>
-    </header>
+    </header> 
     <% if @rush.photo.blank? %>
         <% found_photo = getPictureForName(current_user.token,@rush.name) %>
         <% if !found_photo.blank? %>
             <% @rush.update_attribute(:photo, found_photo) %>
+            <% add_new_photo found_photo @rush.id %>
         <% end %>
     <% end %>
 
     <article class='photo_container'>
         <div class='background'></div>
-        <% if !@rush.photo.blank? %>
-            <% photo_url = @rush.photo %>
+        <% if @rush.photos && @rush.photos[0] %>
+            <div id='profile_picture_1' class='photo' style='display: block;background-image: url(<%= @rush.photos[0].photo_url %>) '></div>
+            <% for i in 2..@rush.photos.count %>
+                <div id='profile_picture_<%= i %>' class='photo' style='display: none;background-image: url(<%= @rush.photos[i-1].photo_url %>) '></div>
+            <% end %>
+            <% has_old = false %>
+            <% if !@rush.photo.blank? %>
+                <div id='profile_picture_old' class='photo' style='display: none;background-image: url(<%= @rush.photo %>) '></div>
+                <% has_old = true %>
+            <% end %>
+        <% elsif !@rush.photo.blank? %>
+            <div id='profile_picture' class='photo' style='background-image: url(<%= @rush.photo %>) '></div>
         <% else %>
             <% photo_url = "http://www.bizsitesolutions.com/images/team/placeholder2.jpg" %>
+            <div id='profile_picture' class='photo' style='background-image: url(<%= photo_url %>) '></div>
         <% end %>
-        <div class='photo' style='background-image: url(<%= photo_url %>) '></div>
     </article>
+
+    <article>
+        <% if @rush.photos && @rush.photos[0] %>
+            <% num_photos = @rush.photos.count %>
+            <% if has_old %>
+                <% num_photos = num_photos + 1 %>
+            <% end %>
+        <% end %>
+    </article>
+
     <article class='info'>
         <dl class="dl-horizontal">
             <article class='show'>
@@ -121,6 +144,43 @@
             </ul>
         </div> -->
     </article>
+    <div style='clear:both'></div>
+    <% if @rush.photos && @rush.photos[0] %>
+            
+        <p style='float: left; margin-right: 10px;'>Choose a photo</p>
+        <select id="photo_dropdown" onchange="changePhoto('<%= @rush.photos.count %>','<%= has_old %>')">
+            <% for i in 1..num_photos %>
+                <option><%= i %></option>
+            <% end %>
+        </select>
+    <% end %>
+
+    <article class='events'>
+        <h4>Events attended</h4>
+        <% if @events.length > 0 %>
+            <ul>
+                <% @events.each do |event| %>
+                    <li class='event-items'><%= event.name %></li>
+                <% end %>
+            </ul>
+        <% else %>
+            <p style='color: #999;'>No events attended</p>
+        <% end %>
+
+        <div style='clear:both; padding-top: 10px;' class='search'>
+            <%= text_field_tag :search, params[:search], :class => 'search_events', :placeholder => "name of event" %>
+            
+            <ul id='search_results'></ul>
+            
+            <%= form_tag attend_rush_path(@rush), :method => :put, :class => 'event_form' do %>
+                <%= hidden_field_tag :event_id %>
+            <% end %>
+
+        </div>
+
+    </article>
+
+
     <article class='comments'>
         <%= form_for @rush_comment do |f| %>
             <%= f.text_area :text, :placeholder => "Say something about " + @rush.name.split[0] %>
@@ -198,3 +258,12 @@
         <% end %>
     </article>
 </section>
+
+<% if @prev_rush %>
+    <%= link_to @prev_rush.name, @prev_rush, :class => 'prev_rush', :style => 'display:none' %>
+<% end %>
+<% if @next_rush %>
+    <%= link_to @next_rush.name, @next_rush, :class => 'next_rush', :style => 'display:none' %>
+<% end %>
+
+<%= javascript_include_tag 'search' %>
