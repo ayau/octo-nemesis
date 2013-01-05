@@ -177,7 +177,7 @@ $ ->
 
     # Arrow key control
     $('html').keydown (e) ->
-        if !$('textarea').is(":focus") && !$('input').is(":focus")
+        if !$('textarea').is(":focus") && !$('input').is(":focus") && $('.rush').length > 0
             if e.keyCode is 39
                 # right
                 if $('.next_rush').length is 0
