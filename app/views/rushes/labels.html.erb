@@ -1,8 +1,13 @@
 <table>
     <% @rushes.each do |rush| %>
-    <tr>
-        <td><%= rush.name %></td>
-        <td><%= rush.residence %></td>
-    </tr>
+        <tr>
+    	<% if rush.openrush %>
+        	<td><%= rush.openrush.name %></td>
+        	<td><%= rush.openrush.residence %></td>
+    	<% else %>
+        	<td><%= rush.name %></td>
+        	<td><%= rush.residence %></td>
+    	<% end %>
+        </tr>
     <% end %>
 </table>
