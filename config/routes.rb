@@ -1,16 +1,14 @@
 RushApp::Application.routes.draw do
 
-    resources :events
-
-    resources :tags
-
     resources :sessions, only: [:new, :create, :destroy]
 
     root to: 'pages#home'
 
     match '/loggedout' => "pages#loggedout"
 
-    match '/donthackmebro' => "sessions#hack"
+    # match '/donthackmebro' => "sessions#hack"
+
+    match '/snrush' => 'openrushes#new'
 
     get "tags/new"
 
@@ -29,12 +27,16 @@ RushApp::Application.routes.draw do
     end
 
     resources :rushes do
+        collection do
+            get 'labels'
+        end
         member do
             get 'show'
             post 'edit_friend'
             post 'edit_contact'
             post 'edit'
             post 'cut'
+            put 'attend'
         end
     end
 
@@ -50,6 +52,21 @@ RushApp::Application.routes.draw do
             post 'edit'
         end
     end
+
+    resources :openrushes do
+        member do
+            get 'disconnect'
+        end
+    end
+
+    resources :events do
+        collection do
+            get 'search'
+        end
+    end
+
+    resources :tags
+
 
     match "/auth/:provider/callback" => "sessions#create"
     match "/signout" => "sessions#destroy", :as => :signout
