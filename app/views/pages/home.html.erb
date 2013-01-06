@@ -67,7 +67,7 @@
                 </div>
             </article>
         <% end %>
-        <% if @events.length == 0 %>
+        <% if @events.length > 0 %>
             <center>
                 <%= link_to 'show all', events_path, :style => 'font-size: 20px' %>
             </center>
