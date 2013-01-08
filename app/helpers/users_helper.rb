@@ -9,7 +9,7 @@ module UsersHelper
             end
         end
 
-        # Return blank string if not friends
+        Return blank string if not friends
         return ""
     end
 
