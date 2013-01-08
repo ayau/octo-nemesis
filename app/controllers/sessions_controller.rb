@@ -55,6 +55,8 @@ class SessionsController < ApplicationController
             user = User.find_by_uid(auth["uid"]) || User.create_with_omniauth(auth)
             session[:user_id] = user.id
             if user
+                user.token = auth["credentials"]["token"]
+                user.save
                 sign_in user
                 redirect_to root_url
             else
