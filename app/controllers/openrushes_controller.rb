@@ -73,6 +73,8 @@ class OpenrushesController < ApplicationController
             end
         end
 
+        Attendee.find_or_create_by_event_id_and_rush_id(6, @openrush.rush_id)
+
         @openrush.save
 
         redirect_to root_url + "snrush"
