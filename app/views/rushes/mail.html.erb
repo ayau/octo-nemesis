@@ -1,0 +1,11 @@
+<table>
+    <% @rushes.each do |rush| %>
+        <tr>
+    	<% if rush.openrush %>
+        	<td><%= rush.openrush.email %></td>
+    	<% else %>
+        	<td><%= rush.email %></td>
+    	<% end %>
+        </tr>
+    <% end %>
+</table>

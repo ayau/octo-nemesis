@@ -29,6 +29,7 @@ RushApp::Application.routes.draw do
     resources :rushes do
         collection do
             get 'labels'
+            get 'mail'
         end
         member do
             get 'show'

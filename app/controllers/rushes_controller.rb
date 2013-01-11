@@ -128,6 +128,9 @@ class RushesController < ApplicationController
     def labels
         @rushes = Rush.find(:all, :order => "name", :conditions => ['active = 1'])
     end
+    def mail
+        @rushes = Rush.find(:all, :order => "name", :conditions => ['active = 1'])
+    end
 
 
 

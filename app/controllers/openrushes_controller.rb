@@ -138,4 +138,8 @@ class OpenrushesController < ApplicationController
         end
         redirect_to openrushes_url
     end
+
+    def signin
+        @openrush = Openrush.new
+    end
 end

@@ -1,0 +1,8 @@
+<section>
+    <h1>Sigma Nu Closed Rush 2013</h1>
+    <%= form_for @openrush do |f| %>
+        <%= f.text_field :name, :placeholder => "Name (First and Last)" %>
+        <%= f.text_field :phone, :placeholder => 'Phone Number' %>
+        <%= f.submit 'Create', :class => 'btn btn-large btn-success' %>
+    <% end %>
+</section>
