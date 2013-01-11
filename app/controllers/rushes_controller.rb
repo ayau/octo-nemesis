@@ -26,13 +26,18 @@ class RushesController < ApplicationController
 
     def edit
         @rush = Rush.find(params[:id])
+        @openrush = Openrush.find_by_rush_id(@rush.id)
         if !(params[:rush][:photo] == @rush.photo)
             photo = Photo.new
             photo.photo_url = params[:rush][:photo]
             photo.rush_id = @rush.id
             photo.save
         end
-        @rush.update_attributes(params[:rush])
+        # @openrush.update_attributes(params[:rush])
+        @openrush.residence = params[:rush][:residence]
+        @openrush.email = params[:rush][:email]
+        @openrush.phone = params[:rush][:phone]
+        @openrush.save
         redirect_to Rush.find(@rush.id)  
     end
 

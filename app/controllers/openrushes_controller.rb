@@ -59,9 +59,7 @@ class OpenrushesController < ApplicationController
         end
         @openrush.rush_id = @rush.id
         @old_openrush = Openrush.find_by_rush_id(@openrush.rush_id)
-        if @old_openrush
-            @old_openrush.update_attribute(:rush_id, nil)
-        end
+
 
         if params[:openrush][:photo]
             if (@rush.has_data_photo == 0)
@@ -73,9 +71,14 @@ class OpenrushesController < ApplicationController
             end
         end
 
-        Attendee.find_or_create_by_event_id_and_rush_id(6, @openrush.rush_id)
+        Attendee.find_or_create_by_event_id_and_rush_id(8, @openrush.rush_id)
 
-        @openrush.save
+        if @old_openrush
+            # @old_openrush.update_attribute(:rush_id, nil)
+        else
+            @openrush.save
+        end
+
 
         redirect_to root_url + "snrush"
 
