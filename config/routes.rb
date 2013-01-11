@@ -9,6 +9,7 @@ RushApp::Application.routes.draw do
     match '/donthackmebro' => "sessions#hack"
 
     match '/snrush' => 'openrushes#new'
+    match '/signin' => 'openrushes#signin'
 
     get "tags/new"
 
@@ -57,6 +58,9 @@ RushApp::Application.routes.draw do
     resources :openrushes do
         member do
             get 'disconnect'
+        end
+        collection do
+            post 'closedsignin'
         end
     end
 

@@ -1,8 +1,13 @@
 <section>
-    <h1>Sigma Nu Closed Rush 2013</h1>
-    <%= form_for @openrush do |f| %>
-        <%= f.text_field :name, :placeholder => "Name (First and Last)" %>
-        <%= f.text_field :phone, :placeholder => 'Phone Number' %>
-        <%= f.submit 'Create', :class => 'btn btn-large btn-success' %>
-    <% end %>
+	<center style='margin-top: 50px'>
+	    <h1>Sigma Nu Closed Rush 2013</h1>
+	    <p style='margin-top: 20px;'>Welcome! Please sign in below.</p>
+	    <div style='width:300px'>
+		    <%= form_for @openrush, :url => {:action => 'closedsignin'} do |f| %>
+		        <%= f.text_field :name, :placeholder => "Name (First and Last)", :style => 'margin-top: 10px'%>
+		        <%= f.text_field :phone, :placeholder => 'Phone Number' %>
+		        <%= f.submit 'Sign in', :class => 'btn btn-large btn-success', :style => 'margin-top: 10px'%>
+		    <% end %>
+		</div>
+	</center>
 </section>
