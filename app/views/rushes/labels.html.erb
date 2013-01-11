@@ -4,9 +4,13 @@
     	<% if rush.openrush %>
         	<td><%= rush.openrush.name %></td>
         	<td><%= rush.openrush.residence %></td>
+            <td><%= rush.openrush.email %></td>
+            <td><%= rush.openrush.phone %></td>
     	<% else %>
         	<td><%= rush.name %></td>
         	<td><%= rush.residence %></td>
+            <td><%= rush.email %></td>
+            <td><%= rush.phone %></td>
     	<% end %>
         </tr>
     <% end %>

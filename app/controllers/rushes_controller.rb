@@ -34,10 +34,19 @@ class RushesController < ApplicationController
             photo.save
         end
         # @openrush.update_attributes(params[:rush])
-        @openrush.residence = params[:rush][:residence]
-        @openrush.email = params[:rush][:email]
-        @openrush.phone = params[:rush][:phone]
-        @openrush.save
+        if (@openrush)
+            @openrush.name = params[:rush][:name]
+            @openrush.residence = params[:rush][:residence]
+            @openrush.email = params[:rush][:email]
+            @openrush.phone = params[:rush][:phone]
+            @openrush.save
+        else
+            @rush.name = params[:rush][:name]
+            @rush.residence = params[:rush][:residence]
+            @rush.email = params[:rush][:email]
+            @rush.phone = params[:rush][:phone]
+            @rush.save
+        end
         redirect_to Rush.find(@rush.id)  
     end
 
