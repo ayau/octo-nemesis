@@ -20,6 +20,7 @@
   <% end %>
 </p>
 
+<p>There were <%= @event.rushes.count %> rushes at this event.</p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

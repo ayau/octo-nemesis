@@ -144,7 +144,8 @@ class OpenrushesController < ApplicationController
     end
 
     def closedsignin
-        @rush = Rush.find_by_phone(params[:openrush][:phone])
+        phone = params[:openrush][:phone].gsub(/[^0-9]/i, '')
+        @rush = Rush.find_by_phone(phone)
         if(@rush)
         else
             @rush = Rush.find_by_name(params[:openrush][:name])
@@ -155,7 +156,7 @@ class OpenrushesController < ApplicationController
             @rush = Rush.new(params[:openrush])
             @rush.save
         end
-        Attendee.find_or_create_by_event_id_and_rush_id(8, @rush.id)
+        Attendee.find_or_create_by_event_id_and_rush_id(10, @rush.id)
 
         redirect_to root_url + "signin"
     end
